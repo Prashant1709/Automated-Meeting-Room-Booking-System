@@ -254,6 +254,38 @@ html {
 
 /* home section ends */
 
+/* Numbers section starts */
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 6rem 2rem;
+}
+
+.stat {
+  text-align: center;
+  font-size: 4rem;
+  padding: 1rem;
+}
+
+.stat h1 {
+  color: #8b9c35;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    padding-top: 3rem;
+  }
+  .stat {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+}
+/* Numbers section ends */
+
 /* features section starts  */
 
 .features .row {
