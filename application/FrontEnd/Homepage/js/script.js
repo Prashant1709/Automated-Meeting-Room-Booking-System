@@ -10,3 +10,11 @@ window.onscroll = () => {
   menu.classList.remove("fa-times");
   navbar.classList.remove("active");
 };
+
+var slideUp = {
+  distance: "150%",
+  origin: "bottom",
+  opacity: null,
+};
+
+ScrollReveal().reveal(".scrollreveal", slideUp);
