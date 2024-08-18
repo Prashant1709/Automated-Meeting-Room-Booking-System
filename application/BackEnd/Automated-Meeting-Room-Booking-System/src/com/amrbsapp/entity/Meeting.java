@@ -20,31 +20,63 @@ public class Meeting {
         this.duration = duration;
     }
 
-    // Schedule Meeting method
-    public void scheduleMeeting() {
-        System.out.println("Meeting scheduled: " + meetingID);
+    public String getMeetingID() {
+        return meetingID;
     }
 
-    // Cancel Meeting method
-    public void cancelMeeting() {
-        System.out.println("Meeting canceled: " + meetingID);
+    public void setMeetingID(String meetingID) {
+        this.meetingID = meetingID;
     }
 
-    // Check Mandatory Amenities method
-    public void checkMandatoryAmenities(){
-        List<Amenity> amenities = room.getMandatoryAmenities();
-        if (amenities == null || amenities.isEmpty()) {
-//            throw new InsufficientAmenitiesException("Room does not have all mandatory amenities for this meeting type.");
-        }
-        System.out.println("All mandatory amenities are present.");
+    public Room getRoom() {
+        return room;
     }
 
-    // Getters and Setters
-    public String getMeetingID() { return meetingID; }
-    public Room getRoom() { return room; }
-    public List<User> getParticipants() { return participants; }
-    public LocalDateTime getMeetingDate() { return meetingDate; }
-    public String getMeetingType() { return meetingType; }
-    public int getDuration() { return duration; }
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
+    }
+
+    public LocalDateTime getMeetingDate() {
+        return meetingDate;
+    }
+
+    public void setMeetingDate(LocalDateTime meetingDate) {
+        this.meetingDate = meetingDate;
+    }
+
+    public String getMeetingType() {
+        return meetingType;
+    }
+
+    public void setMeetingType(String meetingType) {
+        this.meetingType = meetingType;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "Meeting{" +
+                "meetingID='" + meetingID + '\'' +
+                ", room=" + room +
+                ", participants=" + participants +
+                ", meetingDate=" + meetingDate +
+                ", meetingType='" + meetingType + '\'' +
+                ", duration=" + duration +
+                '}';
+    }
 }
-

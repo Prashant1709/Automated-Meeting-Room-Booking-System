@@ -17,22 +17,54 @@ public class Booking {
         this.duration = duration;
     }
 
-    // Confirm Booking method
-    public void confirmBooking() {
-        room.bookRoom();
-        System.out.println("Booking confirmed: " + bookingID);
+    public String getBookingID() {
+        return bookingID;
     }
 
-    // Calculate total cost for the booking (from previous code)
-    public int calculateTotalCost() {
-        return room.calculateCostPerHour() * duration;
+    public void setBookingID(String bookingID) {
+        this.bookingID = bookingID;
     }
 
-    // Getters and Setters
-    public String getBookingID() { return bookingID; }
-    public Room getRoom() { return room; }
-    public User getBookedBy() { return bookedBy; }
-    public LocalDateTime getBookingDate() { return bookingDate; }
-    public int getDuration() { return duration; }
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public User getBookedBy() {
+        return bookedBy;
+    }
+
+    public void setBookedBy(User bookedBy) {
+        this.bookedBy = bookedBy;
+    }
+
+    public LocalDateTime getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDateTime bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingID='" + bookingID + '\'' +
+                ", room=" + room +
+                ", bookedBy=" + bookedBy +
+                ", bookingDate=" + bookingDate +
+                ", duration=" + duration +
+                '}';
+    }
 }
-

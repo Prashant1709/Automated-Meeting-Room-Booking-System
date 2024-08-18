@@ -8,62 +8,52 @@ public class Room {
     private List<Amenity> mandatoryAmenities;
     private boolean isBooked;
 
-    public Room(String roomID, int capacity, List<Amenity> mandatoryAmenities) {
+    public Room(String roomID, int capacity, List<Amenity> mandatoryAmenities, boolean isBooked) {
         this.roomID = roomID;
         this.capacity = capacity;
         this.mandatoryAmenities = mandatoryAmenities;
-        this.isBooked = false;
+        this.isBooked = isBooked;
     }
 
-    // Display Room Details method
-    public void displayRoomDetails() {
-        System.out.println("Room ID: " + roomID);
-        System.out.println("Capacity: " + capacity);
-        System.out.println("Amenities: ");
-        for (Amenity amenity : mandatoryAmenities) {
-            amenity.displayAmenityDetails();
-        }
-        System.out.println("Is Booked: " + (isBooked ? "Yes" : "No"));
+    public String getRoomID() {
+        return roomID;
     }
 
-    // Calculate the per hour cost based on amenities
-    public int calculateCostPerHour() {
-        int cost = 0;
-
-        if (capacity <= 5) {
-            cost += 0;
-        } else if (capacity > 5 && capacity < 10) {
-            cost += 10;
-        } else {
-            cost += 20;
-        }
-
-        for (Amenity amenity : mandatoryAmenities) {
-            cost += amenity.getCreditCost();
-        }
-
-        return cost;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
 
-    // Check if room can be booked
-    public boolean canBeBooked() {
-        return !this.isBooked;
+    public int getCapacity() {
+        return capacity;
     }
 
-    // Mark the room as booked
-    public void bookRoom() {
-        this.isBooked = true;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    // Getters and Setters
-    public String getRoomID() { return roomID; }
-    public int getCapacity() { return capacity; }
-    public void setCapacity(int capacity) { this.capacity = capacity; }
-    public List<Amenity> getMandatoryAmenities() { return mandatoryAmenities; }
-    public void setMandatoryAmenities(List<Amenity> mandatoryAmenities) { this.mandatoryAmenities = mandatoryAmenities; }
-    public boolean isBooked() { return isBooked; }
+    public List<Amenity> getMandatoryAmenities() {
+        return mandatoryAmenities;
+    }
+
+    public void setMandatoryAmenities(List<Amenity> mandatoryAmenities) {
+        this.mandatoryAmenities = mandatoryAmenities;
+    }
+
+    public boolean isBooked() {
+        return isBooked;
+    }
+
     public void setBooked(boolean booked) {
         isBooked = booked;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomID='" + roomID + '\'' +
+                ", capacity=" + capacity +
+                ", mandatoryAmenities=" + mandatoryAmenities +
+                ", isBooked=" + isBooked +
+                '}';
+    }
+}

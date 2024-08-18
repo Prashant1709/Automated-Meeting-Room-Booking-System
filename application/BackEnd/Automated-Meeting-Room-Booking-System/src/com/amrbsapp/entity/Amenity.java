@@ -11,16 +11,36 @@ public class Amenity {
         this.creditCost = creditCost;
     }
 
-    // Display Amenity Details
-    public void displayAmenityDetails() {
-        System.out.println("Amenity ID: " + amenityID);
-        System.out.println("Name: " + name);
-        System.out.println("Credit Cost: " + creditCost);
+    public String getAmenityID() {
+        return amenityID;
     }
 
-    // Getters and Setters
-    public String getAmenityID() { return amenityID; }
-    public String getName() { return name; }
-    public int getCreditCost() { return creditCost; }
-}
+    public void setAmenityID(String amenityID) {
+        this.amenityID = amenityID;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCreditCost() {
+        return creditCost;
+    }
+
+    public void setCreditCost(int creditCost) {
+        this.creditCost = creditCost;
+    }
+
+    @Override
+    public String toString() {
+        return "Amenity{" +
+                "amenityID='" + amenityID + '\'' +
+                ", name='" + name + '\'' +
+                ", creditCost=" + creditCost +
+                '}';
+    }
+}
