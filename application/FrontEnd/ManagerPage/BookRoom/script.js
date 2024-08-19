@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const meetingEndTime = new Date();
-      meetingEndTime.setHours(meetingEndTime.getHours() + duration.hours);
-      meetingEndTime.setMinutes(meetingEndTime.getMinutes() + duration.minutes);
-      meetingEndTime.setSeconds(meetingEndTime.getSeconds() + duration.seconds);
+      const bookingEndTime = new Date();
+      bookingEndTime.setHours(bookingEndTime.getHours() + duration.hours);
+      bookingEndTime.setMinutes(bookingEndTime.getMinutes() + duration.minutes);
+      bookingEndTime.setSeconds(bookingEndTime.getSeconds() + duration.seconds);
 
       room.duration = durationStr;
-      room.meetingEndTime = meetingEndTime.toISOString();
+      room.bookingEndTime = bookingEndTime.toISOString();
       room.status = "booked";
       room.isBooked = true;
       room.members = selectedUserIds
@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const meeting = {
         room: room,
         duration: durationStr,
-        meetingEndTime: meetingEndTime.toISOString(),
+        bookingEndTime: bookingEndTime.toISOString(),
         members: room.members,
         manager: manager,
       };
 
       saveMeetingToLocalStorage(meeting);
 
-      window.location.href = "admin.html"; // Redirect after booking
+      window.location.href = "/application/FrontEnd/ManagerPage/index.html"; // Redirect after booking
     });
 });
 
