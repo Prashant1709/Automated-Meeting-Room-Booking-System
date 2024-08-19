@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ${
                   !room.isBooked
-                    ? `<a href="BookRoom/bookroom.html?roomId=${room.meetingRoomId}" class="book-room-btn">Book Room</a>`
+                    ? `<a href="BookRoom/index.html?roomId=${room.meetingRoomId}" class="book-room-btn">Book Room</a>`
                     : ""
                 }
             </div>

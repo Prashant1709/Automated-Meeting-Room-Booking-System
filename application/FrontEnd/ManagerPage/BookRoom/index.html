@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-image">
+            <img id="roomImage" src="" alt="Meeting Room">
+        </div>
+        <div class="form-container">
+            <h1>Book Meeting Room</h1>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="duration">Duration (H:M:S):</label>
+                    <input type="text" id="duration" name="duration" placeholder="5:30:00" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Users:</label>
+                    <div id="userList" class="checkbox-group"></div>
+                </div>
+                <button type="submit" class="submit-btn">Book Room</button>
+                <div id="error-message" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
