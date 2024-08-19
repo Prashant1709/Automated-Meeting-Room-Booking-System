@@ -1,5 +1,184 @@
-import { newRooms } from "./Rooms.js";
-let rooms = JSON.parse(localStorage.getItem("rooms")) || newRooms;
+let rooms = JSON.parse(localStorage.getItem("rooms")) || [
+  {
+    title: "Executive Room A",
+    imgSrc:
+      "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
+    seatingCapacity: 10,
+    amenities: {
+      projector: 20,
+      "conference call facility": 15,
+      whiteboard: 5,
+      wifi: 10,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 1,
+  },
+  {
+    title: "Conference Room B",
+    imgSrc:
+      "https://m.media-amazon.com/images/I/61b9u0Q0uJL._AC_UF894,1000_QL80_.jpg",
+    seatingCapacity: 12,
+    amenities: {
+      tv: 25,
+      "coffee machine": 10,
+      whiteboard: 5,
+      wifi: 10,
+    },
+    status: "",
+    isBooked: true,
+    bookingEndTime: new Date(Date.now() + 7200000),
+    members: [],
+    duration: 0,
+    meetingRoomId: 2,
+  },
+  {
+    title: "Boardroom C",
+    imgSrc:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdNKexCUl0f2Jr8-5gSxjGYhhOAbrQnmaavw&s",
+    seatingCapacity: 8,
+    amenities: {
+      projector: 20,
+      "conference call facility": 15,
+      wifi: 10,
+      "water dispenser": 5,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 3,
+  },
+  {
+    title: "Training Room D",
+    imgSrc:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzAXr4DN7tUdc2A0lTrLJ1ZB7tdqKvqzVuWfzSL6uy61Sl7xZww_IOss-Tl1ZToAnfWQE&usqp=CAU",
+    seatingCapacity: 20,
+    amenities: {
+      projector: 20,
+      tv: 25,
+      wifi: 10,
+      whiteboard: 5,
+      "coffee machine": 10,
+    },
+    status: "booked",
+    isBooked: true,
+    bookingEndTime: new Date(Date.now() + 3600000),
+    members: [],
+    duration: 0,
+    meetingRoomId: 4,
+  },
+  {
+    title: "Meeting Room E",
+    imgSrc:
+      "https://www.dgicommunications.com/wp-content/uploads/2018/03/DSC_2917.jpg",
+    seatingCapacity: 6,
+    amenities: {
+      projector: 20,
+      wifi: 10,
+      "water dispenser": 5,
+      tv: 25,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 5,
+  },
+  {
+    title: "Huddle Room F",
+    imgSrc:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMT7Hf11Opv4HIbXpHdkIpTkECiqL6kUx_hRrXuOs5RXTZeihrvW8XzkCghhbBheDjP8c&usqp=CAU",
+    seatingCapacity: 4,
+    amenities: {
+      wifi: 10,
+      whiteboard: 5,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 6,
+  },
+  {
+    title: "Executive Suite G",
+    imgSrc:
+      "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
+    seatingCapacity: 14,
+    amenities: {
+      projector: 20,
+      "conference call facility": 15,
+      "coffee machine": 10,
+      wifi: 10,
+      tv: 25,
+    },
+    status: "booked",
+    isBooked: true,
+    bookingEndTime: new Date(Date.now() + 5400000),
+    members: [],
+    duration: 0,
+    meetingRoomId: 7,
+  },
+  {
+    title: "Open Space H",
+    imgSrc:
+      "https://m.media-amazon.com/images/I/61b9u0Q0uJL._AC_UF894,1000_QL80_.jpg",
+    seatingCapacity: 15,
+    amenities: {
+      wifi: 10,
+      whiteboard: 5,
+      "water dispenser": 5,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 8,
+  },
+  {
+    title: "Team Room I",
+    imgSrc:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdNKexCUl0f2Jr8-5gSxjGYhhOAbrQnmaavw&s",
+    seatingCapacity: 9,
+    amenities: {
+      projector: 20,
+      wifi: 10,
+      "coffee machine": 10,
+      tv: 25,
+    },
+    status: "booked",
+    isBooked: true,
+    bookingEndTime: new Date(Date.now() + 10800000),
+    members: [],
+    duration: 0,
+    meetingRoomId: 9,
+  },
+  {
+    title: "Strategy Room J",
+    imgSrc:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzAXr4DN7tUdc2A0lTrLJ1ZB7tdqKvqzVuWfzSL6uy61Sl7xZww_IOss-Tl1ZToAnfWQE&usqp=CAU",
+    seatingCapacity: 7,
+    amenities: {
+      "conference call facility": 15,
+      wifi: 10,
+      whiteboard: 5,
+      "water dispenser": 5,
+    },
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
+    members: [],
+    duration: 0,
+    meetingRoomId: 10,
+  },
+];
 
 // Function to Save Rooms to Local Storage
 function saveRooms() {
@@ -28,8 +207,12 @@ function renderCards() {
             <img src="${room.imgSrc}" alt="${room.title}">
             <div class="status">${room.status.toUpperCase()}</div>
             <div class="icons">
-                <img src="https://cdn-icons-png.flaticon.com/512/5935/5935145.png" alt="Edit" onclick="editRoom(${index})">
-                <img src="https://cdn-icons-png.flaticon.com/512/6048/6048190.png" alt="Delete" onclick="deleteRoom(${index})">
+                <img src="https://cdn-icons-png.flaticon.com/512/5935/5935145.png" alt="Edit" onclick="editRoom(${
+                  room.meetingRoomId
+                })">
+                <img src="https://cdn-icons-png.flaticon.com/512/6048/6048190.png" alt="Delete" onclick="deleteRoom(${
+                  room.meetingRoomId
+                })">
             </div>
             <div class="card-content">
                 <h3>${room.title}</h3>
@@ -39,7 +222,7 @@ function renderCards() {
                 <div class="total-cost">Total Cost: $${totalCost}/hr</div>
                 ${
                   room.status === "booked"
-                    ? `<div class="timer" id="timer-${index}"></div>`
+                    ? `<div class="timer" id="timer-${room?.meetingRoomId}"></div>`
                     : ""
                 }
             </div>
@@ -50,8 +233,8 @@ function renderCards() {
     if (room.status === "booked") {
       startTimer(
         room.bookingEndTime,
-        document.getElementById(`timer-${index}`),
-        index
+        document.getElementById(`timer-${room?.meetingRoomId}`),
+        room?.meetingRoomId
       );
     }
   });
@@ -62,7 +245,7 @@ function calculateTotalCost(amenities) {
   return Object.values(amenities).reduce((acc, curr) => acc + curr, 0);
 }
 
-function startTimer(endTime, timerElement, index) {
+function startTimer(endTime, timerElement, roomId) {
   const updateTimer = () => {
     const now = new Date();
     const timeLeft = new Date(endTime) - now;
@@ -72,9 +255,12 @@ function startTimer(endTime, timerElement, index) {
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
       timerElement.textContent = `Time left: ${minutes}m ${seconds}s`;
     } else {
-      console.log(index);
-      rooms[index].status = "Available";
-      rooms[index].bookingEndTime = null;
+      rooms?.forEach((room) => {
+        if (room?.meetingRoomId === roomId) {
+          room.status = "available";
+          room.bookingEndTime = null;
+        }
+      });
       saveRooms();
       timerElement.textContent = ``;
     }
@@ -84,16 +270,16 @@ function startTimer(endTime, timerElement, index) {
   setInterval(updateTimer, 1000);
 }
 
-// Function to Delete a Room
-function deleteRoom(index) {
-  rooms.splice(index, 1); // Remove room from array
+function deleteRoom(roomId) {
+  const index = rooms?.findIndex((room) => room?.meetingRoomId === roomId);
+  rooms.splice(index, 1);
   saveRooms(); // Save updated array to Local Storage
   renderCards(); // Re-render cards
 }
 
 // Function to Edit a Room (Stub function for now)
-function editRoom(index) {
-  alert("Edit room functionality for room index: " + index);
+function editRoom(roomId) {
+  alert("Edit room functionality for room roomId: " + roomId);
 }
 
 // Load Data from Local Storage and Render on Page Load
