@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap");
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  /* height: 100vh; */
+  /* overflow: hidden; */
+}
+
+.image-section {
+  width: 50%;
+  /* min-height: 100vh; */
+  background-color: #000;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-section {
+  width: 50%;
+  padding: 3rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="button"],
+button[type="submit"] {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover,
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.amenities-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#amenitiesContainer .amenity-input {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+#amenitiesContainer input[type="text"],
+#amenitiesContainer input[type="number"] {
+  width: calc(50% - 20px);
+  margin-right: 10px;
+}
+
+#amenitiesContainer .remove-btn {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+#amenitiesContainer .remove-btn:hover {
+  background-color: #b52a36;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .image-section,
+  .form-section {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .form-section {
+    padding: 3rem 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

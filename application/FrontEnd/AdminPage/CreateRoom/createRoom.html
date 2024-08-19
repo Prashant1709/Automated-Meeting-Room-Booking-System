@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Room</title>
+    <link rel="stylesheet" href="createRoom.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0="
+                alt="Meeting Room">
+        </div>
+        <div class="form-section">
+            <h2>Create a New Room</h2>
+            <form id="createRoomForm">
+                <div class="form-group">
+                    <label for="title">Room Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="imgSrc">Image URL:</label>
+                    <input type="url" id="imgSrc" name="imgSrc" required>
+                </div>
+                <div class="form-group">
+                    <label for="seatingCapacity">Seating Capacity:</label>
+                    <input type="number" id="seatingCapacity" name="seatingCapacity" required>
+                </div>
+                <div class="form-group amenities-group">
+                    <label>Amenities:</label>
+                    <div id="amenitiesContainer"></div>
+                    <button type="button" id="addAmenityBtn">Add Amenity</button>
+                </div>
+                <button type="submit">Create Room</button>
+            </form>
+        </div>
+    </div>
+    <script src="createRoom.js"></script>
+</body>
+
+</html>
