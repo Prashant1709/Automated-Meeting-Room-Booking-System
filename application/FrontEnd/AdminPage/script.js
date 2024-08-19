@@ -279,7 +279,8 @@ function deleteRoom(roomId) {
 
 // Function to Edit a Room (Stub function for now)
 function editRoom(roomId) {
-  alert("Edit room functionality for room roomId: " + roomId);
+  // alert("Edit room functionality for room roomId: " + roomId);
+  window.location.href = `/application/FrontEnd/AdminPage/EditRoom/editRoom.html?roomId=${roomId}`;
 }
 
 // Load Data from Local Storage and Render on Page Load

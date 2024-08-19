@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room</title>
+    <link rel="stylesheet" href="editRoom.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img id="roomImage" src="" alt="Meeting Room">
+        </div>
+        <div class="form-section">
+            <h2>Edit Room</h2>
+            <form id="editRoomForm">
+                <div class="form-group">
+                    <label for="title">Room Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="imgSrc">Image URL:</label>
+                    <input type="url" id="imgSrc" name="imgSrc" required>
+                </div>
+                <div class="form-group">
+                    <label for="seatingCapacity">Seating Capacity:</label>
+                    <input type="number" id="seatingCapacity" name="seatingCapacity" required>
+                </div>
+                <div class="form-group amenities-group">
+                    <label>Amenities:</label>
+                    <div id="amenitiesContainer"></div>
+                    <button type="button" id="addAmenityBtn">Add Amenity</button>
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script src="editRoom.js"></script>
+</body>
+
+</html>
