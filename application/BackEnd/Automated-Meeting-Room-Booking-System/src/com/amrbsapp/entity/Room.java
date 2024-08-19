@@ -3,23 +3,23 @@ package com.amrbsapp.entity;
 import java.util.List;
 
 public class Room {
-    private String roomID;
+    private int roomID;
     private int capacity;
     private List<Amenity> mandatoryAmenities;
     private boolean isBooked;
 
-    public Room(String roomID, int capacity, List<Amenity> mandatoryAmenities, boolean isBooked) {
+    public Room(int roomID, int capacity, List<Amenity> mandatoryAmenities, boolean isBooked) {
         this.roomID = roomID;
         this.capacity = capacity;
         this.mandatoryAmenities = mandatoryAmenities;
         this.isBooked = isBooked;
     }
 
-    public String getRoomID() {
+    public int getRoomID() {
         return roomID;
     }
 
-    public void setRoomID(String roomID) {
+    public void setRoomID(int roomID) {
         this.roomID = roomID;
     }
 

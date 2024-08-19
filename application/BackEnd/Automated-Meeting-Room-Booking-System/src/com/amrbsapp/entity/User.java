@@ -7,9 +7,9 @@ public abstract class User {
     private String name;
     private String email;
     private String phone;
-    private String role;
+    private RoleType role;
 
-    public User(String userID, String name, String email, String phone, String role) {
+    public User(String userID, String name, String email, String phone,RoleType role) {
         this.userID = userID;
         this.name = name;
         this.email = email;
@@ -49,11 +49,11 @@ public abstract class User {
         this.phone = phone;
     }
 
-    public String getRole() {
+    public RoleType getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 
