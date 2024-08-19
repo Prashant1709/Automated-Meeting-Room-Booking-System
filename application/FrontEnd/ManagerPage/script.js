@@ -1,8 +1,8 @@
 let rooms = [];
 document.addEventListener("DOMContentLoaded", () => {
   const roomsContainer = document.getElementById("roomsContainer");
+  rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 
-  // load rooms from localstorage
   rooms.forEach((room) => {
     const roomCard = document.createElement("div");
     roomCard.className = "room-card";
@@ -31,13 +31,55 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 ${
                   !room.isBooked
-                    ? `<a href="bookRoom.html?roomId=${room.meetingRoomId}" class="book-room-btn">Book Room</a>`
+                    ? `<a href="BookRoom/bookroom.html?roomId=${room.meetingRoomId}" class="book-room-btn">Book Room</a>`
                     : ""
                 }
             </div>
         `;
 
     roomsContainer.appendChild(roomCard);
-    // a function is needed which calculates the remaining time of a meeting and shows in the div with the class name timer
+    if (room.status === "booked" || room.isBooked === true) {
+      calculateTimeLeft(
+        room.bookingEndTime,
+        document.getElementById(`timer-${room.meetingRoomId}`),
+        room?.meetingRoomId
+      );
+    }
   });
 });
+
+// Function to Save Rooms to Local Storage
+function saveRooms() {
+  localStorage.setItem("rooms", JSON.stringify(rooms));
+}
+
+function calculateTimeLeft(bookingEndTime, timerElement, meetingRoomId) {
+  const checkTimer = () => {
+    if (!bookingEndTime) return "N/A";
+
+    const now = new Date();
+    const endTime = new Date(bookingEndTime);
+    const timeLeft = Math.max(0, endTime - now);
+    if (timeLeft > 0) {
+      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      timerElement.textContent = `Available In: ${hours}h ${minutes}m ${seconds}s`;
+      //   return `${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      rooms?.forEach((room) => {
+        if (room?.meetingRoomId === meetingRoomId) {
+          room.status = "available";
+          room.isBooked = false;
+          room.bookingEndTime = null;
+        }
+      });
+      saveRooms();
+      timerElement.textContent = ``;
+      return "";
+    }
+  };
+
+  checkTimer();
+  setInterval(checkTimer, 1000);
+}
