@@ -6,7 +6,7 @@ import java.util.List;
 public class Manager extends User {
     private int credits;
 
-    public Manager(String userID, String name, String email, String phone, String role, int credits) {
+    public Manager(String userID, String name, String email, String phone, RoleType role, int credits) {
         super(userID, name, email, phone, role);
         this.credits = credits;
     }

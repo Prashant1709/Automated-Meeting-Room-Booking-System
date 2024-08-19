@@ -2,33 +2,35 @@ package com.amrbsapp.controller;
 
 import com.amrbsapp.entity.Room;
 import com.amrbsapp.service.RoomService;
+import com.amrbsapp.util.DBConnection;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class RoomController {
 
     private RoomService roomService;
-
+    private final Connection conn = DBConnection.getConnection();
     public RoomController(RoomService roomService) {
         this.roomService = roomService;
     }
 
-    Room getRoom(int roomID){
-        return roomService.getRoomById(roomID);
+    public Room getRoom(int roomID){
+        return roomService.getRoomById(roomID,conn);
     }
-    List<Room> getAllRooms(){
-        return null;
+    public List<Room> getAllRooms(){
+        return roomService.getAllRooms(conn);
     }
-    void addRoom(Room room){
-
+    public void addRoom(Room room){
+        roomService.saveRoom(room,conn);
     }
-    void updateRoom(Room room){
-
+    public void updateRoom(Room room){
+        roomService.updateRoom(room,conn);
     }
-    void deleteRoom(int roomID){
-
+    public void deleteRoom(int roomID){
+        roomService.deleteRoom(roomID,conn);
     }
-    List<Room> getAvailableRooms(){
-        return null;
+    public List<Room> getAvailableRooms(){
+        return roomService.getAvailableRooms(conn);
     }
 }

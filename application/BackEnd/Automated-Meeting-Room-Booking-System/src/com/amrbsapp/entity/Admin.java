@@ -6,8 +6,8 @@ public class Admin extends User {
     private List<User> users;
     private List<Room> rooms;
 
-    public Admin(String userID, String name, String email, String phone, String role, List<User> users, List<Room> rooms) {
-        super(userID, name, email, phone, role);
+    public Admin(String userID, String name, String email, String password, RoleType role, List<User> users, List<Room> rooms) {
+        super(userID, name, email, password, role);
         this.users = users;
         this.rooms = rooms;
     }

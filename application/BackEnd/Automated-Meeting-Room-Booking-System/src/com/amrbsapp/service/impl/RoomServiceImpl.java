@@ -3,7 +3,9 @@ package com.amrbsapp.service.impl;
 import com.amrbsapp.dao.RoomDAO;
 import com.amrbsapp.entity.Room;
 import com.amrbsapp.service.RoomService;
+import com.amrbsapp.util.DBConnection;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class RoomServiceImpl implements RoomService {
@@ -12,32 +14,32 @@ public class RoomServiceImpl implements RoomService {
         this.roomDAO = roomDAO;
     }
     @Override
-    public Room getRoomById(int id) {
-        return roomDAO.getRoomByID(id);
+    public Room getRoomById(int id, Connection connection) {
+        return roomDAO.getRoomByID(id, connection);
     }
 
     @Override
-    public List<Room> getAllRooms() {
-        return List.of();
+    public List<Room> getAllRooms(Connection connection) {
+        return roomDAO.getAllRooms(connection);
     }
 
     @Override
-    public void saveRoom(Room room) {
-
+    public void saveRoom(Room room, Connection connection) {
+        roomDAO.saveRoom(room, connection);
     }
 
     @Override
-    public void updateRoom(Room room) {
-
+    public void updateRoom(Room room,Connection connection) {
+        roomDAO.updateRoom(room,connection);
     }
 
     @Override
-    public void deleteRoom(int id) {
-
+    public void deleteRoom(int id, Connection connection) {
+        roomDAO.deleteRoom(id, connection);
     }
 
     @Override
-    public List<Room> getAvailableRooms() {
-        return List.of();
+    public List<Room> getAvailableRooms(Connection connection) {
+        return roomDAO.getAvailableRooms(connection);
     }
 }
