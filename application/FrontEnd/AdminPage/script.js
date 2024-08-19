@@ -24,8 +24,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       whiteboard: 5,
       wifi: 10,
     },
-    status: "booked",
-    bookingEndTime: new Date(Date.now() + 7200000), // 2 hours from now
+    status: "available",
+    bookingEndTime: null, // 2 hours from now
   },
   {
     title: "Boardroom C",
@@ -53,8 +53,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       whiteboard: 5,
       "coffee machine": 10,
     },
-    status: "booked",
-    bookingEndTime: new Date(Date.now() + 3600000), // 1 hour from now
+    status: "available",
+    bookingEndTime: null, // 1 hour from now
   },
   {
     title: "Meeting Room E",
@@ -94,8 +94,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       wifi: 10,
       tv: 25,
     },
-    status: "booked",
-    bookingEndTime: new Date(Date.now() + 5400000), // 1.5 hours from now
+    status: "available",
+    bookingEndTime: null, // 1.5 hours from now
   },
   {
     title: "Open Space H",
@@ -121,8 +121,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "coffee machine": 10,
       tv: 25,
     },
-    status: "booked",
-    bookingEndTime: new Date(Date.now() + 10800000), // 3 hours from now
+    status: "available",
+    bookingEndTime: null, // 3 hours from now
   },
   {
     title: "Strategy Room J",
@@ -150,8 +150,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "coffee machine": 10,
       "conference call facility": 15,
     },
-    status: "booked",
-    bookingEndTime: new Date(Date.now() + 7200000), // 2 hours from now
+    status: "available",
+    bookingEndTime: null, // 2 hours from now
   },
   {
     title: "Creative Room L",
@@ -218,7 +218,8 @@ function renderCards() {
     if (room.status === "booked") {
       startTimer(
         room.bookingEndTime,
-        document.getElementById(`timer-${index}`)
+        document.getElementById(`timer-${index}`),
+        index
       );
     }
   });
@@ -229,7 +230,7 @@ function calculateTotalCost(amenities) {
   return Object.values(amenities).reduce((acc, curr) => acc + curr, 0);
 }
 
-function startTimer(endTime, timerElement) {
+function startTimer(endTime, timerElement, index) {
   const updateTimer = () => {
     const now = new Date();
     const timeLeft = new Date(endTime) - now;
@@ -239,7 +240,11 @@ function startTimer(endTime, timerElement) {
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
       timerElement.textContent = `Time left: ${minutes}m ${seconds}s`;
     } else {
-      timerElement.textContent = `Available now`;
+      console.log(index);
+      rooms[index].status = "Available";
+      rooms[index].bookingEndTime = null;
+      saveRooms();
+      timerElement.textContent = ``;
     }
   };
 
