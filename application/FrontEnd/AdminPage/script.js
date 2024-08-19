@@ -203,6 +203,9 @@ function renderCards() {
 
     const card = document.createElement("div");
     card.classList.add("card");
+    if (room.status === "booked") {
+      card.classList.add("bookedRoom");
+    } else card.classList.remove("bookedRoom");
     card.innerHTML = `
             <img src="${room.imgSrc}" alt="${room.title}">
             <div class="status">${room.status.toUpperCase()}</div>
