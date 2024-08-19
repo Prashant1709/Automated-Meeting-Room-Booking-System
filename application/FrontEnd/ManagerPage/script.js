@@ -83,3 +83,9 @@ function calculateTimeLeft(bookingEndTime, timerElement, meetingRoomId) {
   checkTimer();
   setInterval(checkTimer, 1000);
 }
+
+document
+  .getElementById("view-meetings-btn")
+  .addEventListener("click", function () {
+    window.location.href = "Meetings/meetings.html"; // Redirect to the meetings page
+  });

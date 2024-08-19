@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- filter the meetings for managers and also allow filtering based on fields. -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings</title>
+    <link rel="stylesheet" href="meetings.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Back to Manager Page Button -->
+        <button id="backToManager" class="back-button">Back to Manager Page</button>
+        <h1>Meetings</h1>
+        <table id="meetings-table">
+            <thead>
+                <tr>
+                    <th>Meeting Room</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th>Date & Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="meeting-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Meeting Details</h2>
+            <div id="modal-body">
+                <!-- Meeting details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="meetings.js"></script>
+</body>
+
+</html>
