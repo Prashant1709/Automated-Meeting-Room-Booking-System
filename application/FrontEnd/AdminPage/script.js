@@ -233,7 +233,7 @@ function renderCards() {
 
     cardsGrid.appendChild(card);
 
-    if (room.status === "booked") {
+    if (room.status === "booked" || room.isBooked === true) {
       startTimer(
         room.bookingEndTime,
         document.getElementById(`timer-${room?.meetingRoomId}`),
@@ -254,13 +254,15 @@ function startTimer(endTime, timerElement, roomId) {
     const timeLeft = new Date(endTime) - now;
 
     if (timeLeft > 0) {
+      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
       const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-      timerElement.textContent = `Time left: ${minutes}m ${seconds}s`;
+      timerElement.textContent = `Time left: ${hours}h ${minutes}m ${seconds}s`;
     } else {
       rooms?.forEach((room) => {
         if (room?.meetingRoomId === roomId) {
           room.status = "available";
+          room.isBooked = false;
           room.bookingEndTime = null;
         }
       });
