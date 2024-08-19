@@ -1,6 +1,7 @@
+let rooms = [];
 document.addEventListener("DOMContentLoaded", () => {
   const roomsContainer = document.getElementById("roomsContainer");
-  const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+  rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 
   rooms.forEach((room) => {
     const roomCard = document.createElement("div");
@@ -25,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ).reduce((a, b) => a + b, 0)}</p>
                 ${
                   room.isBooked
-                    ? `<div class="timer">Available in: ${calculateTimeLeft(
-                        room.bookingEndTime
-                      )}</div>`
+                    ? `<div class="timer" id="timer-${room.meetingRoomId}"></div>`
                     : ""
                 }
                 ${
@@ -39,19 +38,48 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
     roomsContainer.appendChild(roomCard);
+    if (room.status === "booked" || room.isBooked === true) {
+      calculateTimeLeft(
+        room.bookingEndTime,
+        document.getElementById(`timer-${room.meetingRoomId}`),
+        room?.meetingRoomId
+      );
+    }
   });
 });
 
-function calculateTimeLeft(bookingEndTime) {
-  if (!bookingEndTime) return "N/A";
+// Function to Save Rooms to Local Storage
+function saveRooms() {
+  localStorage.setItem("rooms", JSON.stringify(rooms));
+}
 
-  const now = new Date();
-  const endTime = new Date(bookingEndTime);
-  const timeLeft = Math.max(0, endTime - now);
+function calculateTimeLeft(bookingEndTime, timerElement, meetingRoomId) {
+  const checkTimer = () => {
+    if (!bookingEndTime) return "N/A";
 
-  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    const now = new Date();
+    const endTime = new Date(bookingEndTime);
+    const timeLeft = Math.max(0, endTime - now);
+    if (timeLeft > 0) {
+      const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      timerElement.textContent = `Available In: ${hours}h ${minutes}m ${seconds}s`;
+      //   return `${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      rooms?.forEach((room) => {
+        if (room?.meetingRoomId === meetingRoomId) {
+          room.status = "available";
+          room.isBooked = false;
+          room.bookingEndTime = null;
+        }
+      });
+      saveRooms();
+      timerElement.textContent = ``;
+      return "";
+    }
+  };
 
-  return `${hours}h ${minutes}m ${seconds}s`;
+  checkTimer();
+  setInterval(checkTimer, 1000);
 }
