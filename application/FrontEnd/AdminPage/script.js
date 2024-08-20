@@ -261,9 +261,11 @@ function startTimer(endTime, timerElement, roomId) {
     } else {
       rooms?.forEach((room) => {
         if (room?.meetingRoomId === roomId) {
-          room.status = "available";
-          room.isBooked = false;
           room.bookingEndTime = null;
+          room.duration = 0;
+          room.isBooked = false;
+          room.members = [];
+          room.status = "available";
         }
       });
       saveRooms();
