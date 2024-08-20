@@ -1,112 +1,92 @@
 [
-    {
-        "meetingRoomId":1,
-        "title": "Executive Room A",
-        "imgSrc": "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
-        "seatingCapacity": 10,
-        "amenities": {
-            "projector": 20,
-            "wifi connection": 15,
-            "conference call facility": 10,
-            "whiteboard": 5,
-            "water dispenser": 10,
-            "TV": 8,
-            "coffee machine": 12
-        },
-        "status": "booked",
-        "bookingEndTime": "2024-08-20 23:50:12",
-        "members": [
-            "John Doe",
-            "Jane Smith",
-            "Emily Davis"
-        ]
+  {
+    "meetingRoomId": 1,
+    "title": "Executive Room A",
+    "imgSrc": "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
+    "seatingCapacity": 10,
+    "amenities": {
+      "projector": 20,
+      "wifi connection": 15,
+      "conference call facility": 10,
+      "whiteboard": 5,
+      "water dispenser": 10,
+      "TV": 8,
+      "coffee machine": 12
     },
-    {
-        "meetingRoomId":2,
-        "title": "Executive Room B",
-        "imgSrc": "https://media.istockphoto.com/id/1221369140/photo/modern-conference-room-interior.jpg?s=612x612&w=0&k=20&c=J1hD9Pjq3h8CnZrDq0HLbcGbhmGozN6vVEd-h7pOjHw=",
-        "seatingCapacity": 15,
-        "amenities": {
-            "projector": 25,
-            "wifi connection": 20,
-            "conference call facility": 15,
-            "whiteboard": 8,
-            "water dispenser": 12,
-            "TV": 10,
-            "coffee machine": 15
-        },
-        "status": "booked",
-        "bookingEndTime": "2024-08-20 23:50:12",
-        "members": [
-            "Alice Johnson",
-            "Bob Brown",
-            "Charlie Wilson"
-        ]
+    "status": "booked",
+    "bookingEndTime": "2024-08-20 23:50:12",
+    "members": ["John Doe", "Jane Smith", "Emily Davis"]
+  },
+  {
+    "meetingRoomId": 2,
+    "title": "Executive Room B",
+    "imgSrc": "https://media.istockphoto.com/id/1221369140/photo/modern-conference-room-interior.jpg?s=612x612&w=0&k=20&c=J1hD9Pjq3h8CnZrDq0HLbcGbhmGozN6vVEd-h7pOjHw=",
+    "seatingCapacity": 15,
+    "amenities": {
+      "projector": 25,
+      "wifi connection": 20,
+      "conference call facility": 15,
+      "whiteboard": 8,
+      "water dispenser": 12,
+      "TV": 10,
+      "coffee machine": 15
     },
-    {
-        "meetingRoomId":3,
-        "title": "Executive Room C",
-        "imgSrc": "https://media.istockphoto.com/id/1160796612/photo/modern-board-room-in-office.jpg?s=612x612&w=0&k=20&c=pTrufhfs4xsUzMf2I6O_Obn7zwPcpjcQ1LL_2AQp9k8=",
-        "seatingCapacity": 8,
-        "amenities": {
-            "projector": 18,
-            "wifi connection": 12,
-            "conference call facility": 10,
-            "whiteboard": 6,
-            "water dispenser": 8,
-            "TV": 7,
-            "coffee machine": 10
-        },
-        "status": "available",
-        "bookingEndTime": null,
-        "members": [
-            "David Green",
-            "Ella White",
-            "Frank Harris"
-        ]
+    "status": "booked",
+    "bookingEndTime": "2024-08-20 23:50:12",
+    "members": ["Alice Johnson", "Bob Brown", "Charlie Wilson"]
+  },
+  {
+    "meetingRoomId": 3,
+    "title": "Executive Room C",
+    "imgSrc": "https://media.istockphoto.com/id/1160796612/photo/modern-board-room-in-office.jpg?s=612x612&w=0&k=20&c=pTrufhfs4xsUzMf2I6O_Obn7zwPcpjcQ1LL_2AQp9k8=",
+    "seatingCapacity": 8,
+    "amenities": {
+      "projector": 18,
+      "wifi connection": 12,
+      "conference call facility": 10,
+      "whiteboard": 6,
+      "water dispenser": 8,
+      "TV": 7,
+      "coffee machine": 10
     },
-    {
-        "meetingRoomId":4,
-        "title": "Executive Room D",
-        "imgSrc": "https://media.istockphoto.com/id/1159245012/photo/empty-meeting-room-with-wooden-furniture.jpg?s=612x612&w=0&k=20&c=jZoTAQWbtvDJts8Cvujapll-0hOSF0YXQmuhy3RPoVs=",
-        "seatingCapacity": 12,
-        "amenities": {
-            "projector": 22,
-            "wifi connection": 16,
-            "conference call facility": 12,
-            "whiteboard": 7,
-            "water dispenser": 9,
-            "TV": 9,
-            "coffee machine": 13
-        },
-        "status": "available",
-        "bookingEndTime": null,
-        "members": [
-            "George Clark",
-            "Hannah Lewis",
-            "Isabella Young"
-        ]
+    "status": "available",
+    "bookingEndTime": null,
+    "members": ["David Green", "Ella White", "Frank Harris"]
+  },
+  {
+    "meetingRoomId": 4,
+    "title": "Executive Room D",
+    "imgSrc": "https://media.istockphoto.com/id/1159245012/photo/empty-meeting-room-with-wooden-furniture.jpg?s=612x612&w=0&k=20&c=jZoTAQWbtvDJts8Cvujapll-0hOSF0YXQmuhy3RPoVs=",
+    "seatingCapacity": 12,
+    "amenities": {
+      "projector": 22,
+      "wifi connection": 16,
+      "conference call facility": 12,
+      "whiteboard": 7,
+      "water dispenser": 9,
+      "TV": 9,
+      "coffee machine": 13
     },
-    {
-        "meetingRoomId":5,
-        "title": "Executive Room E",
-        "imgSrc": "https://media.istockphoto.com/id/1404306835/photo/modern-conference-room-interior-with-big-windows.jpg?s=612x612&w=0&k=20&c=UzrtU8VRlV3mQR1az8y3Koq0V4Q6D2IYAOEUOExWsEY=",
-        "seatingCapacity": 20,
-        "amenities": {
-            "projector": 30,
-            "wifi connection": 25,
-            "conference call facility": 20,
-            "whiteboard": 10,
-            "water dispenser": 15,
-            "TV": 12,
-            "coffee machine": 20
-        },
-        "status": "available",
-        "bookingEndTime": null,
-        "members": [
-            "Jack King",
-            "Karen Scott",
-            "Liam Miller"
-        ]
-    }
+    "status": "available",
+    "bookingEndTime": null,
+    "members": ["George Clark", "Hannah Lewis", "Isabella Young"]
+  },
+  {
+    "meetingRoomId": 5,
+    "title": "Executive Room E",
+    "imgSrc": "https://media.istockphoto.com/id/1404306835/photo/modern-conference-room-interior-with-big-windows.jpg?s=612x612&w=0&k=20&c=UzrtU8VRlV3mQR1az8y3Koq0V4Q6D2IYAOEUOExWsEY=",
+    "seatingCapacity": 20,
+    "amenities": {
+      "projector": 30,
+      "wifi connection": 25,
+      "conference call facility": 20,
+      "whiteboard": 10,
+      "water dispenser": 15,
+      "TV": 12,
+      "coffee machine": 20
+    },
+    "status": "available",
+    "bookingEndTime": null,
+    "members": ["Jack King", "Karen Scott", "Liam Miller"]
+  }
 ]
