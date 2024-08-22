@@ -4,28 +4,38 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Meeting {
-    private String meetingID;
+    private int meetingID;
     private Room room;
     private List<User> participants;
     private LocalDateTime meetingDate;
-    private String meetingType;
+    private MeetingType meetingType;
     private int duration;
+    private List<Amenity> amenities;
 
-    public Meeting(String meetingID, Room room, List<User> participants, LocalDateTime meetingDate, String meetingType, int duration) {
+    public Meeting(int meetingID, Room room, List<User> participants, LocalDateTime meetingDate, MeetingType meetingType, int duration, List<Amenity> amenities) {
         this.meetingID = meetingID;
         this.room = room;
         this.participants = participants;
         this.meetingDate = meetingDate;
         this.meetingType = meetingType;
         this.duration = duration;
+        this.amenities = amenities;
     }
 
-    public String getMeetingID() {
+    public int getMeetingID() {
         return meetingID;
     }
 
-    public void setMeetingID(String meetingID) {
+    public void setMeetingID(int meetingID) {
         this.meetingID = meetingID;
+    }
+
+    public MeetingType getMeetingType() {
+        return meetingType;
+    }
+
+    public void setMeetingType(MeetingType meetingType) {
+        this.meetingType = meetingType;
     }
 
     public Room getRoom() {
@@ -52,13 +62,6 @@ public class Meeting {
         this.meetingDate = meetingDate;
     }
 
-    public String getMeetingType() {
-        return meetingType;
-    }
-
-    public void setMeetingType(String meetingType) {
-        this.meetingType = meetingType;
-    }
 
     public int getDuration() {
         return duration;
@@ -78,5 +81,9 @@ public class Meeting {
                 ", meetingType='" + meetingType + '\'' +
                 ", duration=" + duration +
                 '}';
+    }
+
+    public List<Amenity> getAmenities() {
+        return amenities;
     }
 }

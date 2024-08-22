@@ -3,13 +3,13 @@ package com.amrbsapp.entity;
 import java.time.LocalDateTime;
 
 public class Booking {
-    private String bookingID;
-    private Room room;
-    private User bookedBy;
+    private int bookingID;
+    private String room;
+    private String bookedBy;
     private LocalDateTime bookingDate;
     private int duration;
 
-    public Booking(String bookingID, Room room, User bookedBy, LocalDateTime bookingDate, int duration) {
+    public Booking(int bookingID, String room, String bookedBy, LocalDateTime bookingDate, int duration) {
         this.bookingID = bookingID;
         this.room = room;
         this.bookedBy = bookedBy;
@@ -17,27 +17,27 @@ public class Booking {
         this.duration = duration;
     }
 
-    public String getBookingID() {
+    public int getBookingID() {
         return bookingID;
     }
 
-    public void setBookingID(String bookingID) {
+    public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
     }
 
-    public Room getRoom() {
+    public String getRoom() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(String room) {
         this.room = room;
     }
 
-    public User getBookedBy() {
+    public String getBookedBy() {
         return bookedBy;
     }
 
-    public void setBookedBy(User bookedBy) {
+    public void setBookedBy(String bookedBy) {
         this.bookedBy = bookedBy;
     }
 

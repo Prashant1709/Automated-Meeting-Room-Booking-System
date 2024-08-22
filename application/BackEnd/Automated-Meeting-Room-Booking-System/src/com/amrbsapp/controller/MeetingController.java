@@ -2,32 +2,39 @@ package com.amrbsapp.controller;
 
 import com.amrbsapp.entity.Meeting;
 import com.amrbsapp.entity.Room;
+import com.amrbsapp.service.MeetingService;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class MeetingController {
+    private final MeetingService meetingService;
+    private Connection conn;
+    public MeetingController(MeetingService meetingService) {
+        this.meetingService = meetingService;
+    }
     Meeting getMeeting(int meetingID){
-        return null;
+        return meetingService.getMeetingById(meetingID,conn);
     }
     List<Meeting> getAllMeetings(){
-        return null;
+        return meetingService.getAllMeetings(conn);
     }
-    void addMeeting(Meeting meeting){
-
+    boolean addMeeting(Meeting meeting){
+        return meetingService.saveMeeting(meeting,conn);
     }
-    void updateMeeting(Meeting meeting){
-
+    boolean updateMeeting(Meeting meeting){
+        return meetingService.updateMeeting(meeting,conn);
     }
-    void deleteMeeting(int meetingID){
-
+    boolean deleteMeeting(int meetingID){
+        return meetingService.deleteMeeting(meetingID,conn);
     }
     List<Meeting> getMeetingsByRoomId(int roomID){
-        return null;
+        return meetingService.getMeetingsByRoomId(roomID,conn);
     }
     List<Meeting> getMeetingsByUserId(int userID){
-        return null;
+        return meetingService.getMeetingsByUserId(userID,conn);
     }
     boolean checkMandatoryAmenities(Room room, String meetingType){
-        return false;
+        return meetingService.checkMandatoryAmenities(room,meetingType,conn);
     }
 }

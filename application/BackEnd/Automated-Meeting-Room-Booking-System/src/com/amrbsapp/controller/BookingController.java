@@ -1,34 +1,38 @@
 package com.amrbsapp.controller;
 
 import com.amrbsapp.entity.Booking;
+import com.amrbsapp.service.BookingService;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.List;
 
 public class BookingController {
 
-    Booking getBooking(int bookingID){
-        return null;
+    private BookingService bookingService;
+    private Connection conn;
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
     }
-    List<Booking> getAllBookings(){
-        return null;
+    Booking getBooking(int bookingID, Connection conn){
+        return this.bookingService.getBookingById(bookingID, conn);
     }
-    void addBooking(Booking booking){
-
+    List<Booking> getAllBookings(Connection conn){
+        return this.bookingService.getAllBookings(conn);
     }
-    void updateBooking(Booking booking){
-
+    boolean addBooking(Booking booking, Connection conn){
+        return this.bookingService.saveBooking(booking, conn);
     }
-    void deleteBooking(int bookingID){
-
+    boolean updateBooking(Booking booking, Connection conn){
+        return this.bookingService.updateBooking(booking, conn);
     }
-    List<Booking> getBookingsByUserId(int userID){
-        return null;
+    boolean deleteBooking(int bookingID, Connection conn){
+        return this.bookingService.deleteBooking(bookingID, conn);
     }
-    List<Booking> getBookingsByRoomId(int roomID){
-        return null;
+    List<Booking> getBookingsByUserId(int userID, Connection conn){
+        return this.bookingService.getBookingsByUserId(userID, conn);
     }
-    boolean checkAvailability(int roomID, LocalDate bookingDate, int duration){
-        return false;
+    List<Booking> getBookingsByRoomId(int roomID, Connection conn){
+        return this.bookingService.getBookingsByRoomId(roomID, conn);
     }
 }

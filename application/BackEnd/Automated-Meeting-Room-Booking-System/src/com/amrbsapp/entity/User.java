@@ -3,25 +3,25 @@ package com.amrbsapp.entity;
 import java.util.List;
 
 public abstract class User {
-    private String userID;
+    private int userID;
     private String name;
     private String email;
-    private String phone;
+    private String password;
     private RoleType role;
 
-    public User(String userID, String name, String email, String phone,RoleType role) {
+    public User(int userID, String name, String email, String password,RoleType role) {
         this.userID = userID;
         this.name = name;
         this.email = email;
-        this.phone = phone;
+        this.password = password;
         this.role = role;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
@@ -41,13 +41,7 @@ public abstract class User {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public RoleType getRole() {
         return role;
@@ -57,14 +51,21 @@ public abstract class User {
         this.role = role;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     @Override
     public String toString() {
         return "User{" +
                 "userID='" + userID + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
