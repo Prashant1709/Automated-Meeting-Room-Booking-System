@@ -139,6 +139,12 @@ input[type="text"] {
   gap: 1rem;
 }
 
+#extraAmenities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
 .checkbox-group label {
   display: block;
   margin-bottom: 10px;

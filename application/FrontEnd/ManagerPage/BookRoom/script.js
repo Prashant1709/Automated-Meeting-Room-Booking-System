@@ -99,10 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const totalCost =
+      let totalCost =
         calculateTotalCost(room.amenities, convertTimeToHours(durationStr)) +
         capacityCost;
-      console.log(totalCost);
+
+      const extraAmenities = Array.from(
+        document.querySelectorAll('input[name="extraAmenity"]:checked')
+      ).map((el) => el.value);
+      let extraAmenitiesCost = 0;
+      extraAmenities.forEach((amenity) => {
+        extraAmenitiesCost += amenities[amenity];
+      });
+      totalCost += extraAmenitiesCost * convertTimeToHours(durationStr);
       if (totalCost > manager.credits) {
         document.getElementById("error-message").textContent =
           "Not enough credits.";
@@ -124,6 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateRoomInLocalStorage(roomId, room);
 
+      const extraNewAmenities = Array.from(
+        document.querySelectorAll('input[name="extraAmenity"]:checked')
+      ).map((el) => el.value);
+
       const meeting = {
         room: room,
         duration: durationStr,
@@ -131,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         members: room.members,
         manager: manager,
         totalCost: totalCost,
+        extraAmenities: extraNewAmenities,
       };
 
       saveMeetingToLocalStorage(meeting);
