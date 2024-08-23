@@ -76,7 +76,7 @@ body {
 }
 
 .header .navbar .btn {
-  padding: 0.6rem 2rem;
+  padding: 0.4rem 2rem;
   color: var(--Soft-Red);
   border-radius: 0.3rem;
   border: 2px solid var(--Soft-Red) !important;
