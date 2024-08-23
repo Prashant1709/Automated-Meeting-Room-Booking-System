@@ -5,6 +5,19 @@ html {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  transition: 0.2s ease-in-out !important;
+  scroll-behavior: smooth;
+  text-decoration: none !important;
+}
+
+* {
+  text-transform: capitalize;
+  transition: 0.2s ease-in-out !important;
+  text-decoration: none;
+}
+
+section {
+  padding: 2rem 9%;
 }
 
 :root {
@@ -19,21 +32,131 @@ html {
   --border: 0.2rem solid var(--green);
 }
 
+::selection {
+  background-color: var(--Soft-Red);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--Grayish-Blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--Soft-Blue);
+}
+
+/* navbar sections starts */
+.header {
+  padding: 1.25rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0%;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  cursor: pointer;
+}
+
+.header .logo img {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+.header .navbar a {
+  margin-left: 1rem;
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out !important;
+}
+
+.header .navbar a:hover {
+  color: var(--Soft-Red);
+}
+
+.header .navbar .btn {
+  padding: 0.6rem 2rem;
+  color: var(--Soft-Red);
+  border-radius: 0.3rem;
+  border: 2px solid var(--Soft-Red) !important;
+}
+
+.header .navbar .btn:hover {
+  background-color: var(--Soft-Red) !important;
+  color: #fff;
+  background-color: transparent;
+}
+
+#menu-btn {
+  padding: 1rem 1rem;
+  background-color: #eee;
+  color: var(--Soft-Blue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 991px) {
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: initial;
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    box-shadow: var(--box-shadow);
+    width: 33rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--Soft-Blue);
+    background-color: #fff;
+    transform: scale(0);
+    transform-origin: top right;
+  }
+
+  .header .navbar.active {
+    transform: scale(1);
+  }
+
+  .header .navbar a {
+    margin: 2.5rem;
+    text-align: center;
+    display: block;
+  }
+}
+
+/* navbar sections ends */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 7rem;
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
   font-size: 28px;
   color: #333;
 }
 
 p {
-  text-align: center;
+  text-align: left;
   margin-bottom: 30px;
   color: #666;
 }
@@ -41,7 +164,7 @@ p {
 .rooms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 4rem;
+  gap: 3rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -74,6 +197,7 @@ p {
 
 .room-details {
   padding: 20px;
+  height: 100%;
 }
 
 .room-title {
@@ -85,7 +209,6 @@ p {
 .room-info {
   font-size: 16px;
   color: #555;
-  margin-bottom: 5px;
 }
 
 .amenities-list {
@@ -94,8 +217,7 @@ p {
 }
 
 .book-room-btn {
-  display: inline-block;
-  margin-top: 10px;
+  display: block;
   padding: 10px 15px;
   background-color: #28a745;
   color: #fff;
@@ -157,3 +279,54 @@ p {
 #view-meetings-btn:hover {
   background-color: #0056b3;
 }
+
+/* footer section starts */
+
+.footer {
+  border-top: 1px solid rgb(202, 176, 176);
+  background-color: rgb(224, 239, 246);
+}
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.footer .box-container .box h3 {
+  font-size: 1.5rem;
+  color: var(--black);
+  /* padding: 1rem 0; */
+}
+
+.footer .box-container .box a {
+  display: block;
+  /* font-size: 1.5rem; */
+  color: var(--light-color);
+  padding: 0.6rem 0;
+}
+
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--green);
+}
+
+.footer .box-container .box a:hover i {
+  padding-right: 1rem;
+}
+
+.footer .credit {
+  padding: 1rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.footer .credit span {
+  color: var(--Soft-Red);
+  cursor: pointer;
+}
+
+/* footer section ends */

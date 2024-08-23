@@ -9,24 +9,40 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="left-image">
-            <img id="roomImage" src="" alt="Meeting Room">
-        </div>
-        <div class="form-container">
-            <h1>Book Meeting Room</h1>
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label for="duration">Duration (H:M:S):</label>
-                    <input type="text" id="duration" name="duration" placeholder="5:30:00" required>
+    <div class="wrapper">
+        <div class="container">
+            <div class="left-image">
+                <img id="roomImage" src="" alt="Meeting Room">
+            </div>
+            <div class="form-container">
+                <h1>Book Meeting Room</h1>
+                <div id="roomDetails" class="room-details">
+                    <h3 id="roomName"></h3>
+                    <p><strong>Amenities:</strong> <span id="roomAmenities"></span></p>
+                    <p><strong>Seating Capacity:</strong> <span id="roomCapacity"></span></p>
+                    <p><strong>Booking Cost (per hour):</strong> $<span id="bookingCost"></span></p>
                 </div>
-                <div class="form-group">
-                    <label>Select Users:</label>
-                    <div id="userList" class="checkbox-group"></div>
-                </div>
-                <button type="submit" class="submit-btn">Book Room</button>
-                <div id="error-message" class="error-message"></div>
-            </form>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="duration">Duration (H:M:S):</label>
+                        <input type="text" id="duration" name="duration" placeholder="5:30:00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Users</label>
+                        <div id="userList" class="checkbox-group"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="extraAmenities">Request Additional Amenities</label>
+                        <div id="extraAmenities">
+                            <label><input type="checkbox" name="extraAmenity" value="Projector"> Projector</label>
+                            <label><input type="checkbox" name="extraAmenity" value="Whiteboard"> Whiteboard</label>
+                            <label><input type="checkbox" name="extraAmenity" value="TV"> TV</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Room</button>
+                    <div id="error-message" class="error-message"></div>
+                </form>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -17,6 +17,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  document.getElementById("roomName").textContent = room.title;
+
+  const amenitiesList = Object.keys(room.amenities)
+    .map((amenity) => `${amenity} ($${room.amenities[amenity]}/hr)`)
+    .join(", ");
+  document.getElementById("roomAmenities").textContent = amenitiesList;
+
+  const amenitiesCost = Object.values(room.amenities).reduce(
+    (sum, cost) => sum + cost,
+    0
+  );
+
+  // Determine the additional cost based on room capacity
+  let capacityCost = 0;
+  if (room.seatingCapacity >= 6 && room.seatingCapacity <= 10) {
+    capacityCost = 10;
+  } else if (room.seatingCapacity > 10) {
+    capacityCost = 20;
+  }
+
+  document.getElementById("roomCapacity").textContent = room.seatingCapacity;
+  document.getElementById("bookingCost").textContent =
+    amenitiesCost + capacityCost;
+
   document.getElementById("roomImage").src = room.imgSrc;
 
   const userList = [
@@ -44,8 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
     label.htmlFor = checkbox.id;
     label.textContent = user.name;
 
-    userListContainer.appendChild(checkbox);
-    userListContainer.appendChild(label);
+    const div = document.createElement("div");
+    div.classList.add("checkboxWrapper");
+    div.appendChild(checkbox);
+    div.appendChild(label);
+
+    userListContainer.appendChild(div);
+    // userListContainer.appendChild();
   });
 
   document
@@ -70,7 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const totalCost = calculateTotalCost(room.amenities, duration.hours);
+      let totalCost =
+        calculateTotalCost(room.amenities, convertTimeToHours(durationStr)) +
+        capacityCost;
+
+      const extraAmenities = Array.from(
+        document.querySelectorAll('input[name="extraAmenity"]:checked')
+      ).map((el) => el.value);
+      let extraAmenitiesCost = 0;
+      extraAmenities.forEach((amenity) => {
+        extraAmenitiesCost += amenities[amenity];
+      });
+      totalCost += extraAmenitiesCost * convertTimeToHours(durationStr);
       if (totalCost > manager.credits) {
         document.getElementById("error-message").textContent =
           "Not enough credits.";
@@ -92,12 +132,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateRoomInLocalStorage(roomId, room);
 
+      const extraNewAmenities = Array.from(
+        document.querySelectorAll('input[name="extraAmenity"]:checked')
+      ).map((el) => el.value);
+
       const meeting = {
         room: room,
         duration: durationStr,
         bookingEndTime: bookingEndTime.toISOString(),
         members: room.members,
         manager: manager,
+        totalCost: totalCost,
+        extraAmenities: extraNewAmenities,
       };
 
       saveMeetingToLocalStorage(meeting);
@@ -148,7 +194,7 @@ function validateForm(durationStr, selectedUsersCount, seatingCapacity) {
   }
 
   if (!isValidUsers) {
-    errorMessage.textContent = `Select exactly ${seatingCapacity - 1} users.`;
+    errorMessage.textContent = `Select maximum ${seatingCapacity - 1} users.`;
     return false;
   }
 
@@ -159,4 +205,19 @@ function calculateTotalCost(amenities, hours) {
   return (
     Object.values(amenities).reduce((total, cost) => total + cost, 0) * hours
   );
+}
+
+const amenities = {
+  Projector: 5,
+  "Wifi Connection": 10,
+  "Conference Call Facility": 15,
+  Whiteboard: 5,
+  "Water Dispenser": 5,
+  TV: 10,
+  "Coffee Machine": 10,
+};
+
+function convertTimeToHours(timeString) {
+  const [hours, minutes, seconds] = timeString.split(":").map(Number);
+  return hours + minutes / 60 + seconds / 3600;
 }
