@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meetings</title>
     <link rel="stylesheet" href="meetings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -25,17 +26,21 @@
     <div class="container">
         <!-- Back to Manager Page Button -->
         <!-- <button id="backToManager" class="back-button">Back to Manager Page</button> -->
-        <h1>Meetings</h1>
+        <div class="meetings-header">
+            <h1>Meetings</h1>
+            <input type="text" id="searchBar" placeholder="Search meetings...">
+        </div>
         <table id="meetings-table">
             <thead>
                 <tr>
                     <th>Meeting Room</th>
-                    <th>Duration</th>
+                    <!-- <th>Duration</th> -->
+                    <th id="durationHeader">Duration <span id="sortIcon">▼</span></th>
                     <th>Status</th>
                     <th>Date & Time</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tablebody">
                 <!-- Rows will be dynamically populated here -->
             </tbody>
         </table>

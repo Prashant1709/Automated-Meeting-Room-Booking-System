@@ -1,7 +1,6 @@
-/* styles.css */
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap");
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
@@ -143,22 +142,14 @@ body {
   margin-top: 7rem;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
+  border-radius: 2p;
 }
 
-.back-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.back-button:hover {
-  background-color: #0056b3;
+@media (max-width: 991px) {
+  .container {
+    margin: 20px;
+    margin-top: 7rem;
+  }
 }
 
 /* Additional styles for table and other content */
@@ -212,14 +203,13 @@ tr:hover {
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .close-btn {
   color: #aaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
 }
 
 .close-btn:hover,
@@ -243,51 +233,28 @@ tr:hover {
   background-color: #0056b3;
 }
 
-/* footer section starts */
-/* 
-.footer {
-  border-top: 1px solid rgb(202, 176, 176);
-  background-color: rgb(224, 239, 246);
-}
-.footer .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1rem;
+.meetings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.footer .box-container .box h3 {
-  font-size: 1.5rem;
-  color: var(--black);
+#searchBar {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.footer .box-container .box a {
-  display: block;
-  color: var(--light-color);
-  padding: 0.6rem 0;
-}
-
-.footer .box-container .box a i {
-  padding-right: 0.5rem;
-  color: var(--green);
-}
-
-.footer .box-container .box a:hover i {
-  padding-right: 1rem;
-}
-
-.footer .credit {
-  padding: 1rem;
-  padding-top: 2rem;
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #000;
-  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
-}
-
-.footer .credit span {
-  color: var(--Soft-Red);
+#durationHeader {
   cursor: pointer;
-} */
+}
 
-/* footer section ends */
+#sortIcon {
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
