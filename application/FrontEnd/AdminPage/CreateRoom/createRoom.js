@@ -1,24 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("createRoomForm");
-  const amenitiesContainer = document.getElementById("amenitiesContainer");
-  const addAmenityBtn = document.getElementById("addAmenityBtn");
-
-  // Add amenity fields dynamically
-  addAmenityBtn.addEventListener("click", () => {
-    const amenityDiv = document.createElement("div");
-    amenityDiv.className = "amenity-input";
-    amenityDiv.innerHTML = `
-            <input type="text" placeholder="Amenity Name" required>
-            <input type="number" placeholder="Cost per Hour" required>
-            <button type="button" class="remove-btn">Remove</button>
-        `;
-    amenitiesContainer.appendChild(amenityDiv);
-
-    // Remove amenity field
-    amenityDiv.querySelector(".remove-btn").addEventListener("click", () => {
-      amenitiesContainer.removeChild(amenityDiv);
-    });
-  });
 
   // Form submission
   form.addEventListener("submit", (event) => {
@@ -28,23 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const imgSrc = document.getElementById("imgSrc").value;
     const seatingCapacity = document.getElementById("seatingCapacity").value;
 
-    const amenities = {};
-    document.querySelectorAll(".amenity-input").forEach((inputDiv) => {
-      const amenityName = inputDiv.querySelector('input[type="text"]').value;
-      const amenityCost = inputDiv.querySelector('input[type="number"]').value;
-      amenities[amenityName] = parseInt(amenityCost);
+    const selectedAmenities = {};
+    const checkboxes = document.querySelectorAll(
+      'input[name="amenities"]:checked'
+    );
+
+    if (checkboxes.length === 0) {
+      alert("Please select at least one amenity.");
+      return;
+    }
+
+    checkboxes.forEach((checkbox) => {
+      const amenity = checkbox.value;
+      selectedAmenities[amenity] = amenities[amenity];
     });
 
     const rooms = JSON.parse(localStorage.getItem("rooms")) || [];
     const newRoomId = rooms.length
-      ? Math.max(rooms.map((room) => room.meetingRoomId)) + 1
+      ? Math.max(...rooms.map((room) => room.meetingRoomId)) + 1
       : 1;
 
     const newRoom = {
       title,
       imgSrc,
       seatingCapacity: parseInt(seatingCapacity),
-      amenities,
+      amenities: selectedAmenities,
       status: "available",
       isBooked: false,
       bookingEndTime: null,
@@ -58,3 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "/application/FrontEnd/AdminPage/admin.html";
   });
 });
+
+const amenities = {
+  Projector: 5,
+  "Wifi Connection": 10,
+  "Conference Call Facility": 15,
+  Whiteboard: 5,
+  "Water Dispenser": 5,
+  TV: 10,
+  "Coffee Machine": 10,
+};
