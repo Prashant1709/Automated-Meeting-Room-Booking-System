@@ -292,7 +292,14 @@ function editRoom(roomId) {
 
 // Load Data from Local Storage and Render on Page Load
 window.onload = function () {
-  renderCards(); // Render cards on page load
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // Check if the user exists and has the role of 'ADMIN'
+  if (!user || user.role !== "ADMIN") {
+    // Redirect to the homepage if the user is not an admin
+    window.location.href = "/application/FrontEnd/Homepage/index.html";
+  }
+  if (user) renderCards(); // Render cards on page load
 };
 document
   .getElementById("view-meetings-btn")
