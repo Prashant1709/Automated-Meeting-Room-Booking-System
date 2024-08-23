@@ -81,7 +81,7 @@ section {
 }
 
 .header .navbar .btn {
-  padding: 0.6rem 3rem;
+  padding: 0.6rem 2rem;
   color: var(--Soft-Red);
   border-radius: 0.3rem;
   border: 2px solid var(--Soft-Red) !important;
@@ -139,11 +139,6 @@ section {
   }
 }
 
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-}
 /* navbar sections ends */
 
 .container {
@@ -335,7 +330,3 @@ p {
 }
 
 /* footer section ends */
-
-.hideButton {
-  display: none;
-}

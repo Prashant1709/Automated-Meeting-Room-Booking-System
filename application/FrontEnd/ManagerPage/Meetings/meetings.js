@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // script.js
 
-document.getElementById("backToManager").addEventListener("click", function () {
-  window.location.href = "/application/FrontEnd/ManagerPage/index.html"; // Replace with the actual path to your manager page
-});
-
-// Additional JavaScript code for fetching and displaying meetings
+document
+  .getElementById("view-meetings-btn")
+  .addEventListener("click", function () {
+    window.location.href = "/application/FrontEnd/ManagerPage/index.html";
+  });
