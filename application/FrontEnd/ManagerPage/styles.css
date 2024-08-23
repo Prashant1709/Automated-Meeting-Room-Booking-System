@@ -71,7 +71,7 @@ section {
 }
 
 .header .navbar a {
-  margin-left: 2rem;
+  margin-left: 1rem;
   text-transform: uppercase;
   transition: 0.2s ease-in-out !important;
 }
@@ -336,3 +336,7 @@ p {
 }
 
 /* footer section ends */
+
+.hideButton {
+  display: none;
+}

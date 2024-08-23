@@ -134,3 +134,17 @@ var slideUp = {
   origin: "bottom",
   opacity: null,
 };
+
+window.onload = function () {
+  const currentUrl = window.location.href;
+  const viewMeetingsButton = document.getElementById("view-meetings-btn");
+  const dashboardButton = document.getElementsByClassName("dashboard");
+  console.log(dashboardButton[0]);
+  if (currentUrl.includes("meetings.html")) {
+    viewMeetingsButton.classList.add("hideButton");
+    dashboardButton[0].classList.remove("hideButton");
+  } else {
+    viewMeetingsButton.classList.remove("hideButton");
+    dashboardButton[0].classList.add("hideButton");
+  }
+};
