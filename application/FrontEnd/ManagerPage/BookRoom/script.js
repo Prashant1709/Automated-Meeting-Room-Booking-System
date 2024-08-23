@@ -44,8 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     label.htmlFor = checkbox.id;
     label.textContent = user.name;
 
-    userListContainer.appendChild(checkbox);
-    userListContainer.appendChild(label);
+    const div = document.createElement("div");
+    div.classList.add("checkboxWrapper");
+    div.appendChild(checkbox);
+    div.appendChild(label);
+
+    userListContainer.appendChild(div);
+    // userListContainer.appendChild();
   });
 
   document
@@ -160,3 +165,13 @@ function calculateTotalCost(amenities, hours) {
     Object.values(amenities).reduce((total, cost) => total + cost, 0) * hours
   );
 }
+
+const amenities = {
+  Projector: 5,
+  "Wifi Connection": 10,
+  "Conference Call Facility": 15,
+  Whiteboard: 5,
+  "Water Dispenser": 5,
+  TV: 10,
+  "Coffee Machine": 10,
+};

@@ -1,20 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap");
+
 body,
 html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f4f4f4;
   height: 100%;
 }
 
+:root {
+  --Soft-Blue: hsl(231, 69%, 60%);
+  --Soft-Red: hsl(0, 94%, 66%);
+  --green: hsl(89, 47%, 40%);
+  --Grayish-Blue: hsl(229, 8%, 60%);
+  --Very-Dark-Blue: hsl(229, 31%, 21%);
+  --box-shadow: 0.5rem 0.5rem 0 hsl(231, 69%, 60%);
+  --box-shadow-booked: 0.5rem 0.5rem hsl(89, 47%, 40%);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+}
+
+::selection {
+  background-color: var(--Soft-Red);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--Grayish-Blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--Soft-Blue);
+}
+
+.wrapper {
+  padding: 0rem 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .container {
   display: flex;
-  height: 100vh;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(92, 34, 34, 0.1);
+  /* height: 100vh; */
 }
 
 .left-image {
   flex: 1;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   overflow: hidden;
 }
 
@@ -29,14 +69,17 @@ html {
   padding: 20px;
   background-color: #ffffff;
   border-left: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 h1 {
   font-size: 28px;
+  font-weight: 500;
   color: #333;
   margin-bottom: 20px;
 }
@@ -48,7 +91,7 @@ h1 {
 label {
   display: block;
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
 }
 
@@ -59,11 +102,22 @@ input[type="text"] {
   border-radius: 5px;
   font-size: 16px;
   box-sizing: border-box;
+  outline: none;
+}
+
+.checkboxWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .checkbox-group {
   max-height: 200px;
   overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
 }
 
 .checkbox-group label {
@@ -74,7 +128,7 @@ input[type="text"] {
 }
 
 .submit-btn {
-  padding: 15px;
+  padding: 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
