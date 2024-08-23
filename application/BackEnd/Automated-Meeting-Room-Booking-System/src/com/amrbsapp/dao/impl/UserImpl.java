@@ -70,7 +70,7 @@ public class UserImpl implements UserDAO {
     public void updateUser(User user, Connection connection) {
         try (PreparedStatement ps = connection.prepareStatement(UPDATE_USER_QUERY)) {
             mapUserToPreparedStatement(user, ps);
-            ps.setString(5, user.getUserID());
+            ps.setInt(5, user.getUserID());
             int ra = ps.executeUpdate();
             if (ra == 1) {
                 System.out.println("User updated successfully");
@@ -118,19 +118,19 @@ public class UserImpl implements UserDAO {
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
         String role = rs.getString("role");
         if (role.equals("Admin")) {
-            return new Admin(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.ADMIN, null, null);
+            return new Admin(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.ADMIN);
         } else if (role.equals("Manager")) {
-            return new Manager(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MANAGER, rs.getInt("credits"));
+            return new Manager(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MANAGER, rs.getInt("credits"));
         } else {
-            return new Member(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MEMBER);
+            return new Member(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MEMBER);
         }
     }
 
     private void mapUserToPreparedStatement(User user, PreparedStatement ps) throws SQLException {
-        ps.setString(1, user.getUserID());
+        ps.setInt(1, user.getUserID());
         ps.setString(2, user.getName());
         ps.setString(3, user.getEmail());
-        ps.setString(4, user.getPhone());
+        ps.setString(4, user.getPassword());
         ps.setString(5, user.getRole().toString());
     }
 }
