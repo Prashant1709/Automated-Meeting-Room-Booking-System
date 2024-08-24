@@ -9,25 +9,39 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
+        <div class="logo">
+            <img src="/application//FrontEnd/Logo.png" alt="logo-bookmark">
+        </div>
+
+        <nav class="navbar">
+            <button id="dashboard-btn" class="dashboardButton">Dashboard</button>
+            <button id="addUserBtn">Add User</button>
+            <a href="#" class="btn">Log out</a>
+        </nav>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </header>
+    <!-- <header>
         <h1>Manage Users</h1>
         <button id="addUserBtn">Add User</button>
-    </header>
-    <table id="usersTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- User rows will be populated here -->
-        </tbody>
-    </table>
+    </header> -->
+    <div class="container">
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
 
     <!-- User Modal -->
     <div id="userModal" class="modal">

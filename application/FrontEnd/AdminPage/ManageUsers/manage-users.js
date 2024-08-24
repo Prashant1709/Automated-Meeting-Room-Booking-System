@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const userForm = document.getElementById("userForm");
   const addUserBtn = document.getElementById("addUserBtn");
   const saveUserBtn = document.getElementById("saveUserBtn");
+  const dashboardBtn = document.getElementById("dashboard-btn");
+
+  // Redirect to manage users page
+  dashboardBtn.addEventListener("click", () => {
+    window.location.href = "../admin.html";
+  });
 
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -86,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value;
     const role = document.querySelector('input[name="role"]:checked').value;
 
-    if (users.some((user) => user.id === id && user.id !== id)) {
-      alert("ID already exists.");
+    if (users.some((user) => user.id === id)) {
+      alert(`User with ID ${id} already exists.`);
       return;
     }
 
