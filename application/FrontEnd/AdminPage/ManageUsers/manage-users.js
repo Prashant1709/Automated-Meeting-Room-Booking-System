@@ -142,3 +142,7 @@ const logoutHandler = () => {
   localStorage.removeItem("loggedInUser");
   window.location.href = "/application/FrontEnd/Homepage/index.html";
 };
+
+const goToHome = () => {
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};

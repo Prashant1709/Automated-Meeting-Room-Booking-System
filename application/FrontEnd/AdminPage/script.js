@@ -294,6 +294,9 @@ function editRoom(roomId) {
 window.onload = function () {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
+  if (user)
+    document.querySelector(".nameTitle").textContent = `Welcome, ${user.name}`;
+
   // Check if the user exists and has the role of 'ADMIN'
   if (!user || user.role !== "ADMIN") {
     // Redirect to the homepage if the user is not an admin
@@ -383,5 +386,9 @@ function importUsers() {
 
 const logoutHandler = () => {
   localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
+
+const goToHome = () => {
   window.location.href = "/application/FrontEnd/Homepage/index.html";
 };

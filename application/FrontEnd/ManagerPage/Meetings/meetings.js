@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const meetings = JSON.parse(localStorage.getItem("meetings"));
-  console.log(meetings);
+  const meetings = JSON.parse(localStorage.getItem("meetings")) || [];
   const tableBody = document.querySelector("#meetings-table tbody");
+  const manager = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  meetings?.forEach((meeting) => {
-    const row = document.createElement("tr");
-    row.classList.add("rows");
-    row.innerHTML = `
+  meetings
+    ?.filter((meet) => meet.manager.id === manager.id)
+    ?.forEach((meeting) => {
+      const row = document.createElement("tr");
+      row.classList.add("rows");
+      row.innerHTML = `
             <td class="room">${meeting.room.title}</td>
             <td class="duration">${formatDuration(meeting.duration)}</td>
             <td class="status">${
@@ -19,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
             ).toLocaleString()}</td>
             <td class="mType">${meeting.meetingType}</td>
         `;
-    row.addEventListener("click", () => openModal(meeting));
-    tableBody.appendChild(row);
-  });
+      row.addEventListener("click", () => openModal(meeting));
+      tableBody.appendChild(row);
+    });
 
   const modal = document.getElementById("meeting-modal");
   const closeBtn = document.querySelector(".close-btn");
@@ -150,5 +152,9 @@ window.onscroll = () => {
 
 const logoutHandler = () => {
   localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
+
+const goToHome = () => {
   window.location.href = "/application/FrontEnd/Homepage/index.html";
 };
