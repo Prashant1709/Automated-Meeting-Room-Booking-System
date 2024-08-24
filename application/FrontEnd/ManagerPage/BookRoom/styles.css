@@ -103,10 +103,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 label {
   display: block;
   margin-bottom: 10px;
@@ -137,6 +133,40 @@ input[type="text"] {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
+}
+
+.fieldTitle {
+  font-weight: 600 !important;
+}
+
+.typeGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.meetingRadioWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.form-group div {
+  margin-bottom: 5px;
 }
 
 #extraAmenities {

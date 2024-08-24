@@ -136,6 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('input[name="extraAmenity"]:checked')
       ).map((el) => el.value);
 
+      const meetingType = document.querySelector(
+        'input[name="meetingType"]:checked'
+      ).value;
+
       const meeting = {
         room: room,
         duration: durationStr,
@@ -144,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         manager: manager,
         totalCost: totalCost,
         extraAmenities: extraNewAmenities,
+        meetingType: meetingType,
       };
 
       saveMeetingToLocalStorage(meeting);

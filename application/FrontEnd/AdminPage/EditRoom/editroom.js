@@ -23,38 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("seatingCapacity").value = room.seatingCapacity;
   document.getElementById("roomImage").src = room.imgSrc;
 
-  // Prefill the amenities
-  Object.entries(room.amenities).forEach(([name, cost]) => {
-    const amenityDiv = document.createElement("div");
-    amenityDiv.className = "amenity-input";
-    amenityDiv.innerHTML = `
-            <input type="text" value="${name}" required>
-            <input type="number" value="${cost}" required>
-            <button type="button" class="remove-btn">Remove</button>
-        `;
-    amenitiesContainer.appendChild(amenityDiv);
+  // Prefill the amenities checkboxes
+  const amenitiesCheckboxes = document.querySelectorAll(
+    'input[name="amenities"]'
+  );
 
-    // Remove amenity field
-    amenityDiv.querySelector(".remove-btn").addEventListener("click", () => {
-      amenitiesContainer.removeChild(amenityDiv);
-    });
-  });
-
-  // Add new amenity fields dynamically
-  addAmenityBtn.addEventListener("click", () => {
-    const amenityDiv = document.createElement("div");
-    amenityDiv.className = "amenity-input";
-    amenityDiv.innerHTML = `
-            <input type="text" placeholder="Amenity Name" required>
-            <input type="number" placeholder="Cost per Hour" required>
-            <button type="button" class="remove-btn">Remove</button>
-        `;
-    amenitiesContainer.appendChild(amenityDiv);
-
-    // Remove amenity field
-    amenityDiv.querySelector(".remove-btn").addEventListener("click", () => {
-      amenitiesContainer.removeChild(amenityDiv);
-    });
+  amenitiesCheckboxes.forEach((checkbox) => {
+    // Check if the current checkbox corresponds to an amenity in the room
+    if (room.amenities.hasOwnProperty(checkbox.value)) {
+      // keep changing this to lowercase
+      checkbox.checked = true;
+    }
   });
 
   // Form submission
@@ -65,21 +44,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const imgSrc = document.getElementById("imgSrc").value;
     const seatingCapacity = document.getElementById("seatingCapacity").value;
 
-    const amenities = {};
-    document.querySelectorAll(".amenity-input").forEach((inputDiv) => {
-      const amenityName = inputDiv.querySelector('input[type="text"]').value;
-      const amenityCost = inputDiv.querySelector('input[type="number"]').value;
-      amenities[amenityName] = parseInt(amenityCost);
+    const selectedAmenities = {};
+    const checkboxes = document.querySelectorAll(
+      'input[name="amenities"]:checked'
+    );
+
+    if (checkboxes.length === 0) {
+      alert("Please select at least one amenity.");
+      return;
+    }
+
+    checkboxes.forEach((checkbox) => {
+      const amenity = checkbox.value;
+      selectedAmenities[amenity] = amenities[amenity];
     });
 
     // Update the room details
     room.title = title;
     room.imgSrc = imgSrc;
     room.seatingCapacity = parseInt(seatingCapacity);
-    room.amenities = amenities;
+    room.amenities = selectedAmenities;
 
     // Save the updated rooms array back to localStorage
     localStorage.setItem("rooms", JSON.stringify(rooms));
     window.location.href = "/application/FrontEnd/AdminPage/admin.html";
   });
 });
+
+const amenities = {
+  Projector: 5,
+  "Wifi Connection": 10,
+  "Conference Call Facility": 15,
+  Whiteboard: 5,
+  "Water Dispenser": 5,
+  TV: 10,
+  "Coffee Machine": 10,
+};

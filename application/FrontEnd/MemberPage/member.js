@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // these meetings will be filtered for the user.
   const meetings = JSON.parse(localStorage.getItem("meetings"));
   console.log(meetings);
   const tableBody = document.querySelector("#meetings-table tbody");
@@ -7,18 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const row = document.createElement("tr");
     row.classList.add("rows");
     row.innerHTML = `
-            <td class="room">${meeting.room.title}</td>
-            <td class="duration">${formatDuration(meeting.duration)}</td>
-            <td class="status">${
-              new Date(meeting.bookingEndTime) > new Date()
-                ? "Ongoing"
-                : "Completed"
-            }</td>
-            <td class="date">${new Date(
-              meeting.bookingEndTime
-            ).toLocaleString()}</td>
-            <td class="mType">${meeting.meetingType}</td>
-        `;
+              <td class="room">${meeting.room.title}</td>
+              <td class="duration">${formatDuration(meeting.duration)}</td>
+              <td class="status">${
+                new Date(meeting.bookingEndTime) > new Date()
+                  ? "Ongoing"
+                  : "Completed"
+              }</td>
+              <td class="date">${new Date(
+                meeting.bookingEndTime
+              ).toLocaleString()}</td>
+              <td class="mType">${meeting.meetingType}</td>
+          `;
     row.addEventListener("click", () => openModal(meeting));
     tableBody.appendChild(row);
   });
@@ -29,22 +30,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function openModal(meeting) {
     modalBody.innerHTML = `
-            <p><strong>Meeting Room:</strong> ${meeting.room.title}</p>
-            <p><strong>Duration:</strong> ${formatDuration(
-              meeting.duration
-            )}</p>
-            <p><strong>Status:</strong> ${
-              meeting.isBooked ? "Ongoing" : "Completed"
-            }</p>
-            <p><strong>End Time:</strong> ${new Date(
-              meeting.bookingEndTime
-            ).toLocaleString()}</p>
-            <p><strong>Meeting Type:</strong> ${meeting.meetingType}</p>
-            <p><strong>Members:</strong> ${meeting.members
-              .map((member) => member.name)
-              .join(", ")}</p>
-            <p><strong>Manager:</strong> ${meeting.manager.name}</p>
-        `;
+              <p><strong>Meeting Room:</strong> ${meeting.room.title}</p>
+              <p><strong>Duration:</strong> ${formatDuration(
+                meeting.duration
+              )}</p>
+              <p><strong>Status:</strong> ${
+                meeting.isBooked ? "Ongoing" : "Completed"
+              }</p>
+              <p><strong>End Time:</strong> ${new Date(
+                meeting.bookingEndTime
+              ).toLocaleString()}</p>
+              <p><strong>Meeting Type:</strong> ${meeting.meetingType}</p>
+              <p><strong>Members:</strong> ${meeting.members
+                .map((member) => member.name)
+                .join(", ")}</p>
+              <p><strong>Manager:</strong> ${meeting.manager.name}</p>
+          `;
     modal.style.display = "block";
   }
 
