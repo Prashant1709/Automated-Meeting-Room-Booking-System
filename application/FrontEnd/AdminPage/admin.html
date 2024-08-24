@@ -11,18 +11,20 @@
 
 <body>
     <header class="header">
-        <div class="logo">
+        <div class="logo" onclick="goToHome()">
             <img src="/application//FrontEnd/Logo.png" alt="logo-bookmark">
         </div>
 
         <nav class="navbar">
+            <button id="manage-users-btn" class="managerUserButton">Manage Users</button>
+            <button id="importUsersBtn" class="button">Import Users</button>
             <button id="view-meetings-btn">Create Room</button>
-            <a href="#" class="btn">Log out</a>
+            <a href="#" class="btn" onclick="logoutHandler()">Log out</a>
         </nav>
         <div class="fas fa-bars" id="menu-btn"></div>
     </header>
     <div class="container">
-        <h1>Welcome, You are logged in as an admin.</h1>
+        <h1 class="nameTitle"></h1>
         <p>Here you can manage all the meeting rooms, view their details, and manage bookings.</p>
         <div class="cards-grid" id="cardsGrid">
             <!-- Cards will be dynamically generated here -->

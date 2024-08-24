@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="manage-users.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo" onclick="goToHome()">
+            <img src="/application//FrontEnd/Logo.png" alt="logo-bookmark">
+        </div>
+
+        <nav class="navbar">
+            <button id="dashboard-btn" class="dashboardButton">Dashboard</button>
+            <button id="addUserBtn">Add User</button>
+            <a href="#" class="btn" onclick="logoutHandler()">Log out</a>
+        </nav>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </header>
+    <!-- <header>
+        <h1>Manage Users</h1>
+        <button id="addUserBtn">Add User</button>
+    </header> -->
+    <div class="container">
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- User Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add User</h2>
+            <form id="userForm">
+                <label for="id">ID:</label>
+                <input type="number" id="id" name="id" required>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" required>
+
+                <label>Role:</label>
+                <div class="roleWrapper">
+                    <div class="optionWrapper"><input type="radio" id="manager" name="role" value="MANAGER">
+                        <label for="manager">Manager</label>
+                    </div>
+                    <div class="optionWrapper"><input type="radio" id="member" name="role" value="MEMBER">
+                        <label for="member">Member</label>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" id="saveUserBtn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="manage-users.js"></script>
+</body>
+
+</html>

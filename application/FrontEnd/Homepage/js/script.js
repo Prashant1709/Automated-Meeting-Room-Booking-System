@@ -18,3 +18,15 @@ var slideUp = {
 };
 
 ScrollReveal().reveal(".scrollreveal", slideUp);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const admin = {
+    name: "Bilal Sajid",
+    email: "bilal.admin@gmail.com",
+    password: "admin123",
+    id: 101,
+    role: "ADMIN",
+  };
+
+  localStorage.setItem("adminUser", JSON.stringify(admin));
+});
