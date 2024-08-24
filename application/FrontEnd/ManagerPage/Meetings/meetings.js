@@ -147,3 +147,8 @@ window.onscroll = () => {
   menu.classList.remove("fa-times");
   navbar.classList.remove("active");
 };
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};

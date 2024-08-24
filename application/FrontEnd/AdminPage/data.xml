@@ -31,7 +31,7 @@
         <phone>456-789-0123</phone>
         <password>password456</password>
         <role>MANAGER</role>
-        <creadits>2000</creadits>
+        <credits>2000</credits>
     </user>
     <user>
         <id>5</id>
@@ -48,7 +48,7 @@
         <phone>678-901-2345</phone>
         <password>password678</password>
         <role>MANAGER</role>
-        <creadits>2000</creadits>
+        <credits>2000</credits>
     </user>
     <user>
         <id>7</id>
@@ -65,7 +65,7 @@
         <phone>890-123-4567</phone>
         <password>password890</password>
         <role>MANAGER</role>
-        <creadits>2000</creadits>
+        <credits>2000</credits>
     </user>
     <user>
         <id>9</id>
@@ -82,6 +82,6 @@
         <phone>012-345-6789</phone>
         <password>password012</password>
         <role>MANAGER</role>
-        <creadits>2000</creadits>
+        <credits>2000</credits>
     </user>
 </users>

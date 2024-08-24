@@ -380,3 +380,8 @@ function importUsers() {
     })
     .catch((error) => console.error("Error importing users:", error));
 }
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};

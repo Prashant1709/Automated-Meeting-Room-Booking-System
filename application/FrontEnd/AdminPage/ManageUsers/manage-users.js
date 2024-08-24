@@ -137,3 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   populateTable();
 });
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
