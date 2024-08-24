@@ -115,7 +115,7 @@ body {
     top: 115%;
     right: 2rem;
     box-shadow: var(--box-shadow);
-    width: 33rem;
+    /* width: 33rem; */
     border-radius: 0.5rem;
     border: 2px solid var(--Soft-Blue);
     background-color: #fff;
@@ -124,11 +124,15 @@ body {
   }
 
   .header .navbar.active {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     transform: scale(1);
   }
 
   .header .navbar a {
-    margin: 2.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0;
     text-align: center;
     display: block;
   }
