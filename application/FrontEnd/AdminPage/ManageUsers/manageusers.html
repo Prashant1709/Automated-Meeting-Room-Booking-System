@@ -47,14 +47,20 @@
                 <label for="phone">Phone:</label>
                 <input type="text" id="phone" name="phone" required>
 
-                <label>Role:</label>
-                <input type="radio" id="manager" name="role" value="MANAGER">
-                <label for="manager">Manager</label>
-                <input type="radio" id="member" name="role" value="MEMBER">
-                <label for="member">Member</label>
-
                 <label for="password">Password:</label>
                 <input type="text" id="password" name="password" required>
+
+                <label>Role:</label>
+                <div class="roleWrapper">
+                    <div class="optionWrapper"><input type="radio" id="manager" name="role" value="MANAGER">
+                        <label for="manager">Manager</label>
+                    </div>
+                    <div class="optionWrapper"><input type="radio" id="member" name="role" value="MEMBER">
+                        <label for="member">Member</label>
+                    </div>
+                </div>
+
+
 
                 <button type="submit" id="saveUserBtn">Save</button>
             </form>

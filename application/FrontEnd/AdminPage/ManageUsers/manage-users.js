@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const usersTable = document.querySelector("#usersTable tbody");
-  const userModal = document.getElementById("userModal");
+  const modalOverlay = document.getElementById("userModal");
+  const modalContainer = document.querySelector(".modal-content");
   const closeModal = document.querySelector(".close");
   const userForm = document.getElementById("userForm");
   const addUserBtn = document.getElementById("addUserBtn");
@@ -44,8 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("password").value = user.password;
     document.querySelector(`#${user.role.toLowerCase()}`).checked = true;
     document.getElementById("modalTitle").textContent = "Edit User";
-    userModal.style.display = "block";
+    modalOverlay.classList.add("show");
+    modalContainer.classList.add("show");
   }
+
+  modalContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 
   function deleteUser(id) {
     users = users.filter((user) => user.id !== parseInt(id));
@@ -57,11 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("userForm").reset();
     document.querySelector("#manager").checked = true;
     document.getElementById("modalTitle").textContent = "Add User";
-    userModal.style.display = "block";
+    modalOverlay.classList.add("show");
+    modalContainer.classList.add("show");
+  });
+
+  modalOverlay.addEventListener("click", () => {
+    modalOverlay.classList.remove("show");
+    modalContainer.classList.remove("show");
   });
 
   closeModal.addEventListener("click", () => {
-    userModal.style.display = "none";
+    modalOverlay.classList.remove("show");
+    modalContainer.classList.remove("show");
   });
 
   userForm.addEventListener("submit", (event) => {
