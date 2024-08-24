@@ -27,8 +27,6 @@ const validateAdmin = (adminUser) => {
     localStorage.setItem("loggedInUser", JSON.stringify(adminUser));
     window.location.href = "/application/FrontEnd/AdminPage/admin.html";
     return true;
-  } else {
-    alert("Something went wrong");
   }
   return false;
 };
