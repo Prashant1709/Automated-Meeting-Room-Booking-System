@@ -292,7 +292,7 @@ function editRoom(roomId) {
 
 // Load Data from Local Storage and Render on Page Load
 window.onload = function () {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
   // Check if the user exists and has the role of 'ADMIN'
   if (!user || user.role !== "ADMIN") {
