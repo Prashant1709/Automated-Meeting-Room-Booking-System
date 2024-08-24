@@ -316,7 +316,7 @@ window.onload = function () {
 
   // Redirect to manage users page
   manageUsersBtn.addEventListener("click", () => {
-    window.location.href = "manage-users.html";
+    window.location.href = "ManageUsers/manageusers.html";
   });
 };
 
@@ -348,6 +348,7 @@ function parseXMLToUsers(xml) {
 
   for (let i = 0; i < userElements.length; i++) {
     const userElement = userElements[i];
+    const id = Number(userElement.getElementsByTagName("id")[0].textContent);
     const name = userElement.getElementsByTagName("name")[0].textContent;
     const email = userElement.getElementsByTagName("email")[0].textContent;
     const phone = userElement.getElementsByTagName("phone")[0].textContent;
@@ -355,7 +356,7 @@ function parseXMLToUsers(xml) {
       userElement.getElementsByTagName("password")[0].textContent;
     const role = userElement.getElementsByTagName("role")[0].textContent;
 
-    users.push({ name, email, phone, password, role });
+    users.push({ id, name, email, phone, password, role });
   }
 
   return users;
