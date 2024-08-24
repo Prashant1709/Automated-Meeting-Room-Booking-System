@@ -243,6 +243,10 @@
 
 
     <script src="/application//FrontEnd/Homepage/js/script.js"></script>
+    <script>
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+        if (loggedInUser) document.querySelector(".btn").textContent = "Dashboard"
+    </script>
 </body>
 
 </html>

@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Login | Meeting Room</title>
+    <script>const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (loggedInUser) {
+            const role = loggedInUser.role;
+            if (role === "ADMIN") {
+                window.location.href = "/application/FrontEnd/AdminPage/admin.html";
+            } else if (role === "MANAGER") {
+                window.location.href = "/application/FrontEnd/ManagerPage/index.html";
+            } else {
+                window.location.href = "/application/FrontEnd/MemberPage/member.html";
+            }
+        }</script>
 </head>
 
 <body>
@@ -35,18 +46,6 @@
                     <div class="input_box">
                         <input type="submit" class="input-submit" value="Login">
                     </div>
-                    <!-- <div class="additional-options">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">Remember me</label>
-                        </div>
-                        <div class="forgot">
-                            <a href="#">Forgot Password?</a>
-                        </div>
-                    </div>
-                    <div class="register">
-                        <span>Don't have an account? <a href="#">Register</a></span>
-                    </div> -->
                 </form>
             </div>
         </div>
