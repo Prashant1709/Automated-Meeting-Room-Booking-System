@@ -355,8 +355,14 @@ function parseXMLToUsers(xml) {
     const password =
       userElement.getElementsByTagName("password")[0].textContent;
     const role = userElement.getElementsByTagName("role")[0].textContent;
-
-    users.push({ id, name, email, phone, password, role });
+    const credits = Number(
+      userElement.getElementsByTagName("credits")[0]?.textContent
+    );
+    if (role === "MEMBER")
+      users.push({ id, name, email, phone, password, role });
+    else {
+      users.push({ id, name, email, phone, password, role, credits });
+    }
   }
 
   return users;

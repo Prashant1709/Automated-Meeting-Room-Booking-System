@@ -100,9 +100,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (id && users.some((user) => user.id === id)) {
       const index = users.findIndex((user) => user.id === id);
-      users[index] = { id, name, email, phone, password, role };
+      const user = users[index];
+      if (user.role === "MANAGER")
+        users[index] = {
+          id,
+          name,
+          email,
+          phone,
+          password,
+          role,
+          credits: user.credits,
+        };
+      else {
+        users[index] = {
+          id,
+          name,
+          email,
+          phone,
+          password,
+          role,
+        };
+      }
     } else {
-      users.push({ id, name, email, phone, password, role });
+      if (role === "MANAGER")
+        users.push({ id, name, email, phone, password, role, credits: 2000 });
+      else {
+        users.push({ id, name, email, phone, password, role });
+      }
     }
 
     localStorage.setItem("users", JSON.stringify(users));
