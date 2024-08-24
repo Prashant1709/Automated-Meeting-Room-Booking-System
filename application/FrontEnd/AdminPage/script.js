@@ -308,7 +308,18 @@ window.onload = function () {
   } else {
     importUsersBtn.addEventListener("click", importUsers);
   }
+
+  const manageUsersBtn = document.getElementById("manage-users-btn");
+  if (localStorage.getItem("users")) {
+    manageUsersBtn.classList.add("show");
+  }
+
+  // Redirect to manage users page
+  manageUsersBtn.addEventListener("click", () => {
+    window.location.href = "manage-users.html";
+  });
 };
+
 document
   .getElementById("view-meetings-btn")
   .addEventListener("click", function () {
