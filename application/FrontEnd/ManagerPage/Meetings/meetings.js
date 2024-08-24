@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td class="date">${new Date(
               meeting.bookingEndTime
             ).toLocaleString()}</td>
+            <td class="mType">${meeting.meetingType}</td>
         `;
     row.addEventListener("click", () => openModal(meeting));
     tableBody.appendChild(row);
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p><strong>End Time:</strong> ${new Date(
               meeting.bookingEndTime
             ).toLocaleString()}</p>
+            <p><strong>Meeting Type:</strong> ${meeting.meetingType}</p>
             <p><strong>Members:</strong> ${meeting.members
               .map((member) => member.name)
               .join(", ")}</p>
@@ -83,11 +85,13 @@ document.getElementById("searchBar").addEventListener("input", function () {
     const roomName = row.querySelector(".room").textContent.toLowerCase();
     const status = row.querySelector(".status").textContent.toLowerCase();
     const date = row.querySelector(".date").textContent.toLowerCase();
+    const type = row.querySelector(".mType").textContent.toLowerCase();
 
     if (
       roomName.includes(searchText) ||
       status.includes(searchText) ||
-      date.includes(searchText)
+      date.includes(searchText) ||
+      type.includes(searchText)
     ) {
       row.style.display = "";
     } else {
