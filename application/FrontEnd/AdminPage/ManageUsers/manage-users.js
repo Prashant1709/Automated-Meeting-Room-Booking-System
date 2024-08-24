@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalContainer.classList.remove("show");
   });
 
+  // bug with editing.
   userForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const id = parseInt(document.getElementById("id").value);
@@ -92,10 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value;
     const role = document.querySelector('input[name="role"]:checked').value;
 
-    if (users.some((user) => user.id === id)) {
-      alert(`User with ID ${id} already exists.`);
-      return;
-    }
+    // if (users.some((user) => user.id === id)) {
+    //   alert(`User with ID ${id} already exists.`);
+    //   return;
+    // }
 
     if (id && users.some((user) => user.id === id)) {
       const index = users.findIndex((user) => user.id === id);
@@ -106,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("users", JSON.stringify(users));
     populateTable();
-    userModal.style.display = "none";
+    modalOverlay.classList.remove("show");
+    modalContainer.classList.remove("show");
   });
 
   populateTable();
