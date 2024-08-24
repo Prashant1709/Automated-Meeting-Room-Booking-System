@@ -1,0 +1,72 @@
+<users>
+    <user>
+        <name>John Doe</name>
+        <email>johndoe@example.com</email>
+        <phone>123-456-7890</phone>
+        <password>password123</password>
+        <role>MANAGER</role>
+    </user>
+    <user>
+        <name>Jane Smith</name>
+        <email>janesmith@example.com</email>
+        <phone>234-567-8901</phone>
+        <password>securepass</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <name>Michael Brown</name>
+        <email>michaelbrown@example.com</email>
+        <phone>345-678-9012</phone>
+        <password>michaelpass</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <name>Emily Davis</name>
+        <email>emilydavis@example.com</email>
+        <phone>456-789-0123</phone>
+        <password>emilypassword</password>
+        <role>MANAGER</role>
+    </user>
+    <user>
+        <name>William Johnson</name>
+        <email>williamjohnson@example.com</email>
+        <phone>567-890-1234</phone>
+        <password>williampass</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <name>Olivia Wilson</name>
+        <email>oliviawilson@example.com</email>
+        <phone>678-901-2345</phone>
+        <password>oliviapass</password>
+        <role>MANAGER</role>
+    </user>
+    <user>
+        <name>James Miller</name>
+        <email>jamesmiller@example.com</email>
+        <phone>789-012-3456</phone>
+        <password>jamespassword</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <name>Isabella Garcia</name>
+        <email>isabellagarcia@example.com</email>
+        <phone>890-123-4567</phone>
+        <password>isabellapass</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <name>Henry Martinez</name>
+        <email>henrymartinez@example.com</email>
+        <phone>901-234-5678</phone>
+        <password>henrypassword</password>
+        <role>MANAGER</role>
+    </user>
+    <user>
+        <name>Charlotte Rodriguez</name>
+        <email>charlotterodriguez@example.com</email>
+        <phone>012-345-6789</phone>
+        <password>charlottepass</password>
+        <role>MEMBER</role>
+    </user>
+</users>

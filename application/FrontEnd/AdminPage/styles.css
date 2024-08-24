@@ -70,7 +70,7 @@ section {
 }
 
 .header .navbar a {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   text-transform: uppercase;
   transition: 0.2s ease-in-out !important;
 }
@@ -99,6 +99,22 @@ section {
   border-radius: 0.5rem;
   cursor: pointer;
   display: none;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
 }
 
 /* Media Queries */
@@ -275,6 +291,7 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 #view-meetings-btn:hover {

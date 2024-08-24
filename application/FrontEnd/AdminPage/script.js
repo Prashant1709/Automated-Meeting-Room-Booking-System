@@ -300,6 +300,14 @@ window.onload = function () {
     window.location.href = "/application/FrontEnd/Homepage/index.html";
   }
   if (user) renderCards(); // Render cards on page load
+  const users = localStorage.getItem("users");
+  const importUsersBtn = document.getElementById("importUsersBtn");
+
+  if (users) {
+    importUsersBtn.style.display = "none";
+  } else {
+    importUsersBtn.addEventListener("click", importUsers);
+  }
 };
 document
   .getElementById("view-meetings-btn")
@@ -319,3 +327,38 @@ window.onscroll = () => {
   menu.classList.remove("fa-times");
   navbar.classList.remove("active");
 };
+
+// Function to parse XML and convert it to a JavaScript object
+function parseXMLToUsers(xml) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xml, "application/xml");
+  const users = [];
+  const userElements = xmlDoc.getElementsByTagName("user");
+
+  for (let i = 0; i < userElements.length; i++) {
+    const userElement = userElements[i];
+    const name = userElement.getElementsByTagName("name")[0].textContent;
+    const email = userElement.getElementsByTagName("email")[0].textContent;
+    const phone = userElement.getElementsByTagName("phone")[0].textContent;
+    const password =
+      userElement.getElementsByTagName("password")[0].textContent;
+    const role = userElement.getElementsByTagName("role")[0].textContent;
+
+    users.push({ name, email, phone, password, role });
+  }
+
+  return users;
+}
+
+// Function to handle importing users from the XML file
+function importUsers() {
+  fetch("data.xml")
+    .then((response) => response.text())
+    .then((data) => {
+      const users = parseXMLToUsers(data);
+      localStorage.setItem("users", JSON.stringify(users));
+      document.getElementById("importUsersBtn").style.display = "none";
+      alert("Users have been imported successfully.");
+    })
+    .catch((error) => console.error("Error importing users:", error));
+}
