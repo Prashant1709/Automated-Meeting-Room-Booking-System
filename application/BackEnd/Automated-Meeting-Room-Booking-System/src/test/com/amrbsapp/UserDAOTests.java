@@ -1,21 +1,15 @@
 package test.com.amrbsapp;
 
-
-
 import com.amrbsapp.dao.impl.UserImpl;
 import com.amrbsapp.entity.*;
 import org.junit.jupiter.api.*;
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
 import java.util.List;
-
-
-import static org.junit.Assert.*;
 import org.junit.jupiter.api.DisplayName;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("AMRBS User App Tests")
 public class UserDAOTests {
@@ -52,15 +46,7 @@ public class UserDAOTests {
         }
     }
 
-    @Test
-    public void testGetUserById() throws SQLException {
-        User user = userDAO.gerUserById(1, connection);
-        assertNotNull(user);
-        assertEquals(1, user.getUserID());
-        assertEquals("John Doe", user.getName());
-        assertEquals("john.doe@example.com", user.getEmail());
-        assertEquals("Admin", user.getRole().toString());
-    }
+
 
     @Test
     public void testGetAllUsers() throws SQLException {

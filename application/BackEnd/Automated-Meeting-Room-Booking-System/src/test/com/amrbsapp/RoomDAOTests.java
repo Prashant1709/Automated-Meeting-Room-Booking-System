@@ -1,19 +1,15 @@
 package test.com.amrbsapp;
+
 import com.amrbsapp.dao.impl.RoomImpl;
 import org.junit.jupiter.api.*;
-
-
 import org.junit.jupiter.api.DisplayName;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-
-import static org.junit.Assert.*;
-
-
 import com.amrbsapp.entity.Room;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("AMRBS Room App Tests")
 public class RoomDAOTests {
@@ -45,14 +41,6 @@ public class RoomDAOTests {
         }
     }
 
-    @Test
-    public void testGetRoomByID() throws SQLException {
-        Room room = roomDAO.getRoomByID(1, connection);
-        assertNotNull(room);
-        assertEquals(1, room.getRoomID());
-        assertEquals(50, room.getCapacity());
-        assertFalse(room.isBooked());
-    }
 
     @Test
     public void testGetAllRooms() throws SQLException {

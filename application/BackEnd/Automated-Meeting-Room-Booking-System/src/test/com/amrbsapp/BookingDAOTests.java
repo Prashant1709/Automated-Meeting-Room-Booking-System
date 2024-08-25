@@ -5,10 +5,6 @@ import com.amrbsapp.dao.impl.AmenityImpl;
 import com.amrbsapp.dao.impl.BookingImpl;
 import com.amrbsapp.entity.Amenity;
 import com.amrbsapp.entity.Booking;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,8 +24,8 @@ public class BookingDAOTests {
     private static Connection connection;
     private BookingImpl bookingDAO;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    @BeforeEach
+    public void setUpBeforeClass() throws Exception {
         // Set up the database connection
         String url = "jdbc:mysql://localhost:3306/amrbsapp_test"; // Use your test DB
         String username = "root";
@@ -37,7 +33,7 @@ public class BookingDAOTests {
         connection = DriverManager.getConnection(url, username, password);
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         bookingDAO = new BookingImpl();
     }
@@ -132,13 +128,7 @@ public class BookingDAOTests {
         }
     }
 
-    @After
-    public void tearDown() throws Exception {
-        // Optionally clean up database after each test
-        connection.createStatement().execute("DELETE FROM amrbsapp.bookings WHERE roomID LIKE 'R1%'");
-    }
-
-    @AfterClass
+    @AfterAll
     public static void tearDownAfterClass() throws Exception {
         if (connection != null) {
             connection.close();
