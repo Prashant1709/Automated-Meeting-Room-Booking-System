@@ -19,6 +19,27 @@ public class UserImpl implements UserDAO {
     private static final String UPDATE_USER_QUERY = "UPDATE amrbsapp.users SET name=?, email=?, password=?, role=? WHERE userID=?";
     private static final String DELETE_USER_QUERY = "DELETE FROM amrbsapp.users WHERE userID=?";
     private static final String GET_USER_BY_EMAIL_QUERY = "SELECT * FROM amrbsapp.users WHERE email=?";
+    private static final String ASSIGN_CREDITS_QUERY = "UPDATE amrbsapp.users SET credits=? WHERE userID=?";
+    private static final String GET_CREDITS_QUERY = "SELECT credits FROM amrbsapp.users WHERE userID=?";
+    private static final String GET_USER_BY_EMAIL_AND_PASSWORD_QUERY = "SELECT * FROM amrbsapp.users WHERE email=? AND password=?";
+
+
+    @Override
+    public String authenticateUser(String email, String password, Connection connection) {
+        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_EMAIL_AND_PASSWORD_QUERY)) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("role");
+                }
+            }
+        } catch (SQLException e) {
+            // Log the exception
+            e.printStackTrace();
+        }
+        return "";
+    }
 
 //    @Override
 //    public User gerUserById(int id, Connection connection) {
@@ -149,6 +170,23 @@ public class UserImpl implements UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void assignCredits(int id, int credits, Connection connection) {
+        try (PreparedStatement ps = connection.prepareStatement(ASSIGN_CREDITS_QUERY)) {
+            ps.setInt(1, credits);
+            ps.setInt(2, id);
+            int ra = ps.executeUpdate();
+            if (ra == 1) {
+                System.out.println("Credits assigned successfully");
+            } else {
+                System.out.println("Credits not assigned");
+            }
+        } catch (SQLException e) {
+            // Log the exception
+            e.printStackTrace();
+        }
     }
 
     private User mapResultSetToUser(ResultSet rs) throws SQLException {

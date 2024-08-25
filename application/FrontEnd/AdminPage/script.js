@@ -5,10 +5,10 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
     seatingCapacity: 10,
     amenities: {
-      projector: 20,
-      "conference call facility": 15,
-      whiteboard: 5,
-      wifi: 10,
+      Projector: 5,
+      "Conference Call Facility": 15,
+      Whiteboard: 5,
+      "Wifi Connection": 10,
     },
     status: "available",
     isBooked: false,
@@ -23,14 +23,14 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://m.media-amazon.com/images/I/61b9u0Q0uJL._AC_UF894,1000_QL80_.jpg",
     seatingCapacity: 12,
     amenities: {
-      tv: 25,
-      "coffee machine": 10,
-      whiteboard: 5,
-      wifi: 10,
+      TV: 10,
+      "Coffee Machine": 10,
+      Whiteboard: 5,
+      "Wifi Connection": 10,
     },
-    status: "",
-    isBooked: true,
-    bookingEndTime: new Date(Date.now() + 7200000),
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
     members: [],
     duration: 0,
     meetingRoomId: 2,
@@ -41,10 +41,10 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdNKexCUl0f2Jr8-5gSxjGYhhOAbrQnmaavw&s",
     seatingCapacity: 8,
     amenities: {
-      projector: 20,
-      "conference call facility": 15,
-      wifi: 10,
-      "water dispenser": 5,
+      Projector: 5,
+      "Conference Call Facility": 15,
+      "Wifi Connection": 10,
+      "Water Dispenser": 5,
     },
     status: "available",
     isBooked: false,
@@ -59,15 +59,15 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzAXr4DN7tUdc2A0lTrLJ1ZB7tdqKvqzVuWfzSL6uy61Sl7xZww_IOss-Tl1ZToAnfWQE&usqp=CAU",
     seatingCapacity: 20,
     amenities: {
-      projector: 20,
-      tv: 25,
-      wifi: 10,
-      whiteboard: 5,
-      "coffee machine": 10,
+      Projector: 5,
+      TV: 10,
+      "Wifi Connection": 10,
+      Whiteboard: 5,
+      "Coffee Machine": 10,
     },
-    status: "booked",
-    isBooked: true,
-    bookingEndTime: new Date(Date.now() + 3600000),
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
     members: [],
     duration: 0,
     meetingRoomId: 4,
@@ -78,10 +78,10 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://www.dgicommunications.com/wp-content/uploads/2018/03/DSC_2917.jpg",
     seatingCapacity: 6,
     amenities: {
-      projector: 20,
-      wifi: 10,
-      "water dispenser": 5,
-      tv: 25,
+      Projector: 5,
+      "Wifi Connection": 10,
+      "Water Dispenser": 5,
+      TV: 10,
     },
     status: "available",
     isBooked: false,
@@ -96,8 +96,8 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMT7Hf11Opv4HIbXpHdkIpTkECiqL6kUx_hRrXuOs5RXTZeihrvW8XzkCghhbBheDjP8c&usqp=CAU",
     seatingCapacity: 4,
     amenities: {
-      wifi: 10,
-      whiteboard: 5,
+      "Wifi Connection": 10,
+      Whiteboard: 5,
     },
     status: "available",
     isBooked: false,
@@ -112,15 +112,15 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://media.istockphoto.com/id/1323139676/photo/outside-view-of-empty-meeting-room-with-table-and-office-chairs.jpg?s=612x612&w=0&k=20&c=nqEWkNlKAfpdTUl_jiky8YbxiO4jBYcr0gCA5z4MvA0=",
     seatingCapacity: 14,
     amenities: {
-      projector: 20,
-      "conference call facility": 15,
-      "coffee machine": 10,
-      wifi: 10,
-      tv: 25,
+      Projector: 5,
+      "Conference Call Facility": 15,
+      "Coffee Machine": 10,
+      "Wifi Connection": 10,
+      TV: 10,
     },
-    status: "booked",
-    isBooked: true,
-    bookingEndTime: new Date(Date.now() + 5400000),
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
     members: [],
     duration: 0,
     meetingRoomId: 7,
@@ -131,9 +131,9 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://m.media-amazon.com/images/I/61b9u0Q0uJL._AC_UF894,1000_QL80_.jpg",
     seatingCapacity: 15,
     amenities: {
-      wifi: 10,
-      whiteboard: 5,
-      "water dispenser": 5,
+      "Wifi Connection": 10,
+      Whiteboard: 5,
+      "Water Dispenser": 5,
     },
     status: "available",
     isBooked: false,
@@ -148,14 +148,14 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdNKexCUl0f2Jr8-5gSxjGYhhOAbrQnmaavw&s",
     seatingCapacity: 9,
     amenities: {
-      projector: 20,
-      wifi: 10,
-      "coffee machine": 10,
-      tv: 25,
+      Projector: 5,
+      "Wifi Connection": 10,
+      "Coffee Machine": 10,
+      TV: 10,
     },
-    status: "booked",
-    isBooked: true,
-    bookingEndTime: new Date(Date.now() + 10800000),
+    status: "available",
+    isBooked: false,
+    bookingEndTime: null,
     members: [],
     duration: 0,
     meetingRoomId: 9,
@@ -166,10 +166,10 @@ let rooms = JSON.parse(localStorage.getItem("rooms")) || [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzAXr4DN7tUdc2A0lTrLJ1ZB7tdqKvqzVuWfzSL6uy61Sl7xZww_IOss-Tl1ZToAnfWQE&usqp=CAU",
     seatingCapacity: 7,
     amenities: {
-      "conference call facility": 15,
-      wifi: 10,
-      whiteboard: 5,
-      "water dispenser": 5,
+      "Conference Call Facility": 15,
+      "Wifi Connection": 10,
+      Whiteboard: 5,
+      "Water Dispenser": 5,
     },
     status: "available",
     isBooked: false,
@@ -269,7 +269,7 @@ function startTimer(endTime, timerElement, roomId) {
         }
       });
       saveRooms();
-      timerElement.textContent = ``;
+      if (timerElement) timerElement.textContent = ``;
     }
   };
 
@@ -292,7 +292,10 @@ function editRoom(roomId) {
 
 // Load Data from Local Storage and Render on Page Load
 window.onload = function () {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (user)
+    document.querySelector(".nameTitle").textContent = `Welcome, ${user.name}`;
 
   // Check if the user exists and has the role of 'ADMIN'
   if (!user || user.role !== "ADMIN") {
@@ -300,11 +303,36 @@ window.onload = function () {
     window.location.href = "/application/FrontEnd/Homepage/index.html";
   }
   if (user) renderCards(); // Render cards on page load
+  const users = localStorage.getItem("users");
+  const importUsersBtn = document.getElementById("importUsersBtn");
+
+  if (users) {
+    importUsersBtn.style.display = "none";
+  } else {
+    importUsersBtn.addEventListener("click", importUsers);
+  }
+
+  const manageUsersBtn = document.getElementById("manage-users-btn");
+  if (localStorage.getItem("users")) {
+    manageUsersBtn.classList.add("show");
+  }
+
+  // Redirect to manage users page
+  manageUsersBtn.addEventListener("click", () => {
+    window.location.href = "ManageUsers/manageusers.html";
+  });
 };
+
 document
   .getElementById("view-meetings-btn")
   .addEventListener("click", function () {
     window.location.href = "CreateRoom/createRoom.html"; // Redirect to the meetings page
+  });
+
+  document
+  .getElementById("view-stats-btn")
+  .addEventListener("click", function () {
+    window.location.href = "../StatisticsPage/index.html"; // Redirect to the meetings page
   });
 
 let menu = document.querySelector("#menu-btn");
@@ -318,4 +346,55 @@ menu.onclick = () => {
 window.onscroll = () => {
   menu.classList.remove("fa-times");
   navbar.classList.remove("active");
+};
+
+// Function to parse XML and convert it to a JavaScript object
+function parseXMLToUsers(xml) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xml, "application/xml");
+  const users = [];
+  const userElements = xmlDoc.getElementsByTagName("user");
+
+  for (let i = 0; i < userElements.length; i++) {
+    const userElement = userElements[i];
+    const id = Number(userElement.getElementsByTagName("id")[0].textContent);
+    const name = userElement.getElementsByTagName("name")[0].textContent;
+    const email = userElement.getElementsByTagName("email")[0].textContent;
+    const phone = userElement.getElementsByTagName("phone")[0].textContent;
+    const password =
+      userElement.getElementsByTagName("password")[0].textContent;
+    const role = userElement.getElementsByTagName("role")[0].textContent;
+    const credits = Number(
+      userElement.getElementsByTagName("credits")[0]?.textContent
+    );
+    if (role === "MEMBER")
+      users.push({ id, name, email, phone, password, role });
+    else {
+      users.push({ id, name, email, phone, password, role, credits });
+    }
+  }
+
+  return users;
+}
+
+// Function to handle importing users from the XML file
+function importUsers() {
+  fetch("data.xml")
+    .then((response) => response.text())
+    .then((data) => {
+      const users = parseXMLToUsers(data);
+      localStorage.setItem("users", JSON.stringify(users));
+      document.getElementById("importUsersBtn").style.display = "none";
+      alert("Users have been imported successfully.");
+    })
+    .catch((error) => console.error("Error importing users:", error));
+}
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
+
+const goToHome = () => {
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
 };

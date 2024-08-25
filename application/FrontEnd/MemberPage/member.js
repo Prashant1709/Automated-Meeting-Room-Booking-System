@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   // these meetings will be filtered for the user.
   const meetings = JSON.parse(localStorage.getItem("meetings"));
-  console.log(meetings);
   const tableBody = document.querySelector("#meetings-table tbody");
+  const member = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  meetings?.forEach((meeting) => {
-    const row = document.createElement("tr");
-    row.classList.add("rows");
-    row.innerHTML = `
+  document.querySelector(".memberName").textContent = `Welcome, ${member.name}`;
+
+  meetings
+    ?.filter(
+      (meet) => meet.members.filter((i) => i.id === member.id)?.length > 0
+    )
+    ?.forEach((meeting) => {
+      const row = document.createElement("tr");
+      row.classList.add("rows");
+      row.innerHTML = `
               <td class="room">${meeting.room.title}</td>
               <td class="duration">${formatDuration(meeting.duration)}</td>
               <td class="status">${
@@ -20,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
               ).toLocaleString()}</td>
               <td class="mType">${meeting.meetingType}</td>
           `;
-    row.addEventListener("click", () => openModal(meeting));
-    tableBody.appendChild(row);
-  });
+      row.addEventListener("click", () => openModal(meeting));
+      tableBody.appendChild(row);
+    });
 
   const modal = document.getElementById("meeting-modal");
   const closeBtn = document.querySelector(".close-btn");
@@ -72,11 +78,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-document
-  .getElementById("view-meetings-btn")
-  .addEventListener("click", function () {
-    window.location.href = "/application/FrontEnd/ManagerPage/index.html";
-  });
+// document
+//   .getElementById("view-meetings-btn")
+//   .addEventListener("click", function () {
+//     window.location.href = "/application/FrontEnd/ManagerPage/index.html";
+//   });
 
 document.getElementById("searchBar").addEventListener("input", function () {
   const searchText = this.value.toLowerCase();
@@ -147,4 +153,13 @@ menu.onclick = () => {
 window.onscroll = () => {
   menu.classList.remove("fa-times");
   navbar.classList.remove("active");
+};
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
+
+const goToHome = () => {
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
 };

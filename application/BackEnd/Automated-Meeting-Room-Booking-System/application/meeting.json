@@ -1,0 +1,1 @@
+{"meetingID":"1","room":{"roomID":"2", "capacity":5, "mandatoryAmenities":null, "isBooked":false},"participants":[User{userID='3', name='Jai', email='jai@gmail.com', password='jai123', role=MEMBER}],"meetingDate":"2024-09-01T10:00","meetingType":"BUSINESS","duration":50}

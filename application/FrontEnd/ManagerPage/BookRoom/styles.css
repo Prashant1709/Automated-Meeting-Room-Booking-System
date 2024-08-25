@@ -63,6 +63,15 @@ html {
   object-fit: cover;
 }
 
+@media (max-width: 768px) {
+  .left-image {
+    display: none;
+  }
+  .container {
+    width: 95%;
+  }
+}
+
 .form-container {
   flex: 1;
   max-height: 90vh;
@@ -131,7 +140,7 @@ input[type="text"] {
   max-height: 200px;
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
 

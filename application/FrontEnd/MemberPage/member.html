@@ -13,13 +13,13 @@
 
 <body>
     <header class="header">
-        <div class="logo">
+        <div class="logo" onclick="goToHome()">
             <img src="/application//FrontEnd/Logo.png" alt="logo-bookmark">
         </div>
 
         <nav class="navbar">
             <!-- <button id="view-meetings-btn">Dashboard</button> -->
-            <a href="#" class="btn">Log out</a>
+            <a href="#" class="btn" onclick="logoutHandler()">Log out</a>
         </nav>
         <div class="fas fa-bars" id="menu-btn"></div>
     </header>
@@ -27,7 +27,7 @@
         <!-- Back to Manager Page Button -->
         <!-- <button id="backToManager" class="back-button">Back to Manager Page</button> -->
         <div class="meetings-header">
-            <h1>Welcome {MEMBER_NAME}</h1>
+            <h1 class="memberName"></h1>
             <input type="text" id="searchBar" placeholder="Search meetings...">
         </div>
         <table id="meetings-table">

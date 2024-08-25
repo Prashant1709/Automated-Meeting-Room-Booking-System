@@ -6,6 +6,8 @@ fetch("rooms.json")
   .then((data) => {
     // changing this line because we need to fetch rooms from localstorage.
     rooms = JSON.parse(localStorage.getItem("rooms")) || data;
+    const manager = JSON.parse(localStorage.getItem("loggedInUser"));
+    document.querySelector(".name").textContent = `Welcome, ${manager.name}`;
 
     function renderRooms() {
       const roomsContainer = document.getElementById("roomsContainer");
@@ -115,6 +117,11 @@ document
   .addEventListener("click", function () {
     window.location.href = "Meetings/meetings.html"; // Redirect to the meetings page
   });
+  document
+  .getElementById("view-stats-btn")
+  .addEventListener("click", function () {
+    window.location.href = "../StatisticsPage/index.html"; // Redirect to the stats page
+  });
 
 let menu = document.querySelector("#menu-btn");
 let navbar = document.querySelector(".navbar");
@@ -133,4 +140,13 @@ var slideUp = {
   distance: "150%",
   origin: "bottom",
   opacity: null,
+};
+
+const logoutHandler = () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
+};
+
+const goToHome = () => {
+  window.location.href = "/application/FrontEnd/Homepage/index.html";
 };

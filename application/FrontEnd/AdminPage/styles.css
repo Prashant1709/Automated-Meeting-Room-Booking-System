@@ -70,7 +70,7 @@ section {
 }
 
 .header .navbar a {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   text-transform: uppercase;
   transition: 0.2s ease-in-out !important;
 }
@@ -101,6 +101,43 @@ section {
   display: none;
 }
 
+#manage-users-btn {
+  display: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#manage-users-btn.show {
+  display: inline-block;
+}
+
+#manage-users-btn:hover {
+  background-color: #45a049;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
 /* Media Queries */
 
 @media (max-width: 991px) {
@@ -119,7 +156,7 @@ section {
     top: 115%;
     right: 2rem;
     box-shadow: var(--box-shadow);
-    width: 33rem;
+    /* width: 33rem; */
     border-radius: 0.5rem;
     border: 2px solid var(--Soft-Blue);
     background-color: #fff;
@@ -128,11 +165,15 @@ section {
   }
 
   .header .navbar.active {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     transform: scale(1);
   }
 
   .header .navbar a {
-    margin: 2.5rem;
+    margin-top: 0.5rem;
+    margin-left: 0;
     text-align: center;
     display: block;
   }
@@ -275,10 +316,31 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 #view-meetings-btn:hover {
   background-color: #0056b3;
+}
+#view-stats-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+#view-stats-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  #view-meetings-btn {
+    margin-left: 0;
+  }
 }
 
 /* footer section starts */

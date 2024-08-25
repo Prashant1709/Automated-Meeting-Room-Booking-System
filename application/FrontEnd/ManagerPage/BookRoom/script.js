@@ -2,15 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const queryParams = new URLSearchParams(window.location.search);
   const roomId = queryParams.get("roomId");
 
-  // need to clear fields in the rooms array once meeting ends, need to show the meetings on the manager page.
-
   const room = getRoomById(roomId);
-  const manager = {
-    id: 1,
-    name: "John Doe",
-    role: "MANAGER",
-    credits: 50,
-  };
+  const manager = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (!room) {
     alert("Room not found");
@@ -43,18 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("roomImage").src = room.imgSrc;
 
-  const userList = [
-    { id: 1, name: "Alice", role: "USER" },
-    { id: 2, name: "Bob", role: "USER" },
-    { id: 3, name: "Charlie", role: "USER" },
-    { id: 4, name: "David", role: "USER" },
-    { id: 5, name: "Eve", role: "USER" },
-    { id: 6, name: "Frank", role: "USER" },
-    { id: 7, name: "Grace", role: "USER" },
-    { id: 8, name: "Hannah", role: "USER" },
-    { id: 9, name: "Isaac", role: "USER" },
-    { id: 10, name: "Jack", role: "USER" },
-  ];
+  const userList =
+    JSON.parse(localStorage.getItem("users")).filter(
+      (u) => u.id !== manager.id
+    ) || [];
 
   const userListContainer = document.getElementById("userList");
   userList.forEach((user) => {
@@ -131,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .concat(manager);
 
       updateRoomInLocalStorage(roomId, room);
+      updateManager(manager, totalCost);
 
       const extraNewAmenities = Array.from(
         document.querySelectorAll('input[name="extraAmenity"]:checked')
@@ -152,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       saveMeetingToLocalStorage(meeting);
+      
 
       window.location.href = "/application/FrontEnd/ManagerPage/index.html"; // Redirect after booking
     });
@@ -170,6 +157,15 @@ function updateRoomInLocalStorage(roomId, updatedRoom) {
     localStorage.setItem("rooms", JSON.stringify(rooms));
   }
 }
+
+const updateManager = (manager, cost) => {
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const index = users.findIndex((user) => user.id === manager.id);
+  if (index !== -1) {
+    users[index].credits = manager.credits - Number(cost);
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+};
 
 function saveMeetingToLocalStorage(meeting) {
   let meetings = JSON.parse(localStorage.getItem("meetings")) || [];

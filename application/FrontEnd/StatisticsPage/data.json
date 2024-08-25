@@ -1,0 +1,34 @@
+{
+    "rooms": [
+        {
+            "name": "North Meeting Room",
+            "location": "Building A",
+            "bookings": 120,
+            "hours": 88
+        },
+        {
+            "name": "4C3 Meeting Room",
+            "location": "Building B",
+            "bookings": 64,
+            "hours": 80
+        },
+        {
+            "name": "South Meeting Room",
+            "location": "Building C",
+            "bookings": 40,
+            "hours": 60
+        },
+        {
+            "name": "Lotus Meeting Room",
+            "location": "Building D",
+            "bookings": 32,
+            "hours": 55
+        },
+        {
+            "name": "5A3 Meeting Room",
+            "location": "Building E",
+            "bookings": 34,
+            "hours": 44
+        }
+    ]
+}
