@@ -13,19 +13,19 @@ public class AmenityController {
     public AmenityController(AmenityService amenityService) {
         this.amenityService = amenityService;
     }
-    Amenity getAmenity(int amenityID){
+    public Amenity getAmenity(int amenityID){
         return amenityService.getAmenityById(amenityID,conn);
     }
-    List<Amenity> getAllAmenities(){
+    public List<Amenity> getAllAmenities(){
         return amenityService.getAmenities(conn);
     }
-    void addAmenity(Amenity amenity){
+    public void addAmenity(Amenity amenity){
         amenityService.saveAmenity(amenity,conn);
     }
-    void updateAmenity(Amenity amenity){
+    public void updateAmenity(Amenity amenity){
         amenityService.updateAmenity(amenity,conn);
     }
-    void deleteAmenity(int amenityID){
+    public void deleteAmenity(int amenityID){
         amenityService.deleteAmenity(amenityID,conn);
     }
 }

@@ -5,6 +5,7 @@ import com.amrbsapp.service.UserService;
 import com.amrbsapp.util.DBConnection;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserController {
@@ -15,25 +16,37 @@ public class UserController {
         this.userService = userService;
     }
 
-    User getUser(int userID){
+    public boolean checkMondayAnd6PM(){
+        LocalDateTime now = LocalDateTime.now();
+        boolean test = false;
+        if (now.getDayOfWeek().toString().equals("MONDAY") && now.getHour() == 6){
+            test = true;
+        }
+        return test;
+    }
+
+    public String authenticateUser(String email, String password){
+        return userService.authenticateUser(email,password,conn);
+    }
+    public User getUser(int userID){
         return userService.getUserById(userID,conn);
     }
-    List<User> getAllUsers(){
+    public List<User> getAllUsers(){
         return userService.getAllUsers(conn);
     }
-    void addUser(User user){
+    public void addUser(User user){
         userService.saveUser(user,conn);
     }
-    void updateUser(User user){
+    public void updateUser(User user){
         userService.updateUser(user,conn);
     }
-    void deleteUser(int userID){
+    public void deleteUser(int userID){
         userService.deleteUser(userID,conn);
     }
-    User login(String email, String password){
+    public User login(String email, String password){
         return userService.login(email,password,conn);
     }
-    void assignCredits(int userID, int credits){
+    public void assignCredits(int userID, int credits){
         userService.assignCredits(userID,credits,conn);
     }
 }

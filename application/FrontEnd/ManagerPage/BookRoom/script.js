@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       saveMeetingToLocalStorage(meeting);
+      
 
       window.location.href = "/application/FrontEnd/ManagerPage/index.html"; // Redirect after booking
     });

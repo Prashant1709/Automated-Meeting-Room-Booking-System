@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.List;
 
 public interface UserService {
+    String authenticateUser(String email, String password, Connection connection);
     User getUserById(int userID, Connection connection);
     List<User> getAllUsers(Connection connection);
     void saveUser(User user,Connection connection);

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     // JDBC driver name and database credentials
-    private static final String URL = "jdbc:mysql://localhost:3306";
+    private static String URL = "jdbc:mysql://localhost:3306";
     private static final String USER = "root";
     private static final String PASSWORD = "Regalsun2017!@";
 
@@ -22,6 +22,16 @@ public class DBConnection {
     public static Connection getConnection() {
         Connection con = null;
         try {
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+    public static Connection getConnection(String dbName) {
+        Connection con = null;
+        try {
+            URL = URL + "/" + dbName;
             con = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
