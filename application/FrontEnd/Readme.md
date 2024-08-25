@@ -1,4 +1,4 @@
-![Project Banner](./image.png)
+![Project Banner](./Display_Image.png)
 
 # Project Title
 
