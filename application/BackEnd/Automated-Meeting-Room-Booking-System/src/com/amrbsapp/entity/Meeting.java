@@ -82,7 +82,16 @@ public class Meeting {
                 ", duration=" + duration +
                 '}';
     }
-
+    public String toJSON() {
+        return "{" +
+                "\"meetingID\":\"" + meetingID + "\"," +
+                "\"room\":" + room.toJson() + "," +
+                "\"participants\":" + participants + "," +
+                "\"meetingDate\":\"" + meetingDate + "\"," +
+                "\"meetingType\":\"" + meetingType + "\"," +
+                "\"duration\":" + duration +
+                "}";
+    }
     public List<Amenity> getAmenities() {
         return amenities;
     }

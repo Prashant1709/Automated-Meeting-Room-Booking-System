@@ -3,6 +3,10 @@ package com.amrbsapp.dao.impl;
 import com.amrbsapp.dao.MeetingDAO;
 import com.amrbsapp.entity.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,13 +71,14 @@ public class MeetingImpl implements MeetingDAO {
 
     @Override
     public boolean saveMeeting(Meeting meeting, Connection connection) {
-        String insertMeetingQuery = "INSERT INTO meetings (roomID, meetingType, meetingDate, duration) VALUES (?, ?, ?, ?)";
+        String insertMeetingQuery = "INSERT INTO meetings (meetingID,roomID, meetingType, meetingDate, duration) VALUES (?, ?, ?, ?, ?)";
         int rowsAffected = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertMeetingQuery, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setInt(1, meeting.getRoom().getRoomID());
-            preparedStatement.setString(2, meeting.getMeetingType().name());
-            preparedStatement.setTimestamp(3, java.sql.Timestamp.valueOf(meeting.getMeetingDate()));
-            preparedStatement.setInt(4, meeting.getDuration());
+            preparedStatement.setInt(1, meeting.getMeetingID());
+            preparedStatement.setInt(2, meeting.getRoom().getRoomID());
+            preparedStatement.setString(3, meeting.getMeetingType().toString());
+            preparedStatement.setTimestamp(4, java.sql.Timestamp.valueOf(meeting.getMeetingDate()));
+            preparedStatement.setInt(5, meeting.getDuration());
             rowsAffected = preparedStatement.executeUpdate();
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
@@ -81,6 +86,8 @@ public class MeetingImpl implements MeetingDAO {
                     int meetingID = generatedKeys.getInt(1);
                     insertParticipants(meetingID, meeting.getParticipants(), connection);
                     insertAmenities(meetingID, meeting.getAmenities(), connection);
+                    //export the meeting json to a file
+                    saveMeetingAsJson(meeting);
                 }
             }
         } catch (SQLException e) {
@@ -275,6 +282,34 @@ public class MeetingImpl implements MeetingDAO {
             psDeleteAmenities.executeUpdate();
         }
     }
+    public static void saveMeetingAsJson(Meeting meeting) {
+        // Convert the Meeting object to a JSON string
+        String jsonString = meeting.toJSON();
+        // Get the current working directory
+        String currentDir = System.getProperty("user.dir");
+        // Define the path to the application folder
+        Path applicationDir = Paths.get(currentDir, "application");
+        // Ensure the directory exists (create it if it doesn't)
+        try {
+            Files.createDirectories(applicationDir);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Failed to create application directory.");
+            return;
+        }
+        // Define the full path to the JSON file
+        Path filePath = applicationDir.resolve("meeting.json");
+        try {
+            // Write the JSON string to the file
+            Files.write(filePath, jsonString.getBytes());
+            System.out.println("Meeting saved successfully as JSON in the application folder.");
+            System.out.println("File saved at: " + filePath.toString()); // Print the directory
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Failed to save the Meeting object as JSON.");
+        }
+    }
+
 //    @Override
 //    public Meeting getMeetingByID(int meetingID, Connection connection) {
 //        String query = "SELECT m.meetingID, m.roomID, m.meetingType, m.meetingDate, m.duration, " +
