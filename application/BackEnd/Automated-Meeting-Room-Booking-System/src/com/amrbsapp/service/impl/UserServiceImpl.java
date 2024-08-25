@@ -9,7 +9,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public User getUserById(int userID, Connection connection) {
+    public User getUserById(int userID, Connection connection)  {
+
         return null;
     }
 

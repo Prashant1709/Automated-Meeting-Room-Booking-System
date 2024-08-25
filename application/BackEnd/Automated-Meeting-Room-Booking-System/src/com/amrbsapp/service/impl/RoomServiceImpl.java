@@ -2,6 +2,7 @@ package com.amrbsapp.service.impl;
 
 import com.amrbsapp.dao.RoomDAO;
 import com.amrbsapp.entity.Room;
+import com.amrbsapp.exception.RoomNotAvailableException;
 import com.amrbsapp.service.RoomService;
 import com.amrbsapp.util.DBConnection;
 
@@ -14,7 +15,7 @@ public class RoomServiceImpl implements RoomService {
         this.roomDAO = roomDAO;
     }
     @Override
-    public Room getRoomById(int id, Connection connection) {
+    public Room getRoomById(int id, Connection connection) throws RoomNotAvailableException {
         return roomDAO.getRoomByID(id, connection);
     }
 
@@ -29,12 +30,12 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void updateRoom(Room room,Connection connection) {
+    public void updateRoom(Room room,Connection connection) throws RoomNotAvailableException  {
         roomDAO.updateRoom(room,connection);
     }
 
     @Override
-    public void deleteRoom(int id, Connection connection) {
+    public void deleteRoom(int id, Connection connection) throws RoomNotAvailableException {
         roomDAO.deleteRoom(id, connection);
     }
 

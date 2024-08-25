@@ -2,6 +2,7 @@ package com.amrbsapp.service.impl;
 
 import com.amrbsapp.dao.AmenityDAO;
 import com.amrbsapp.entity.Amenity;
+import com.amrbsapp.exception.AmenityNotFoundException;
 import com.amrbsapp.service.AmenityService;
 
 import java.sql.Connection;
@@ -13,7 +14,7 @@ public class AmenityServiceImpl implements AmenityService {
         this.amenityDAO = amenityDAO;
     }
     @Override
-    public Amenity getAmenityById(int id, Connection connection) {
+    public Amenity getAmenityById(int id, Connection connection) throws AmenityNotFoundException {
         return amenityDAO.getAmenity(id, connection);
     }
 
@@ -28,12 +29,12 @@ public class AmenityServiceImpl implements AmenityService {
     }
 
     @Override
-    public void updateAmenity(Amenity amenity, Connection connection) {
+    public void updateAmenity(Amenity amenity, Connection connection) throws AmenityNotFoundException {
         amenityDAO.updateAmenity(amenity, connection);
     }
 
     @Override
-    public void deleteAmenity(int id, Connection connection) {
+    public void deleteAmenity(int id, Connection connection) throws AmenityNotFoundException {
         amenityDAO.deleteAmenity(id, connection);
     }
 }

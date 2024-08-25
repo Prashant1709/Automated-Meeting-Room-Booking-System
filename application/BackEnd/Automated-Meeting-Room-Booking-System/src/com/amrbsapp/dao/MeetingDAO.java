@@ -16,4 +16,6 @@ public interface MeetingDAO {
     List<Meeting> getMeetingsByUserID(int userID, Connection connection);
     List<Meeting> getMeetingsByRoomID(int roomID, Connection connection);
     boolean checkMandatoryAmenities(Room room, String meetingType, Connection connection);
+
+
 }
