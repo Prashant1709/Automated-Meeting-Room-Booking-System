@@ -1,21 +1,21 @@
 package com.amrbsapp.entity;
 
 public class Amenity {
-    private String amenityID;
+    private int amenityID;
     private String name;
     private int creditCost;
 
-    public Amenity(String amenityID, String name, int creditCost) {
+    public Amenity(int amenityID, String name, int creditCost) {
         this.amenityID = amenityID;
         this.name = name;
         this.creditCost = creditCost;
     }
 
-    public String getAmenityID() {
+    public int getAmenityID() {
         return amenityID;
     }
 
-    public void setAmenityID(String amenityID) {
+    public void setAmenityID(int amenityID) {
         this.amenityID = amenityID;
     }
 
@@ -38,7 +38,7 @@ public class Amenity {
     @Override
     public String toString() {
         return "Amenity{" +
-                "amenityID='" + amenityID + '\'' +
+                "amenityID=" + amenityID +
                 ", name='" + name + '\'' +
                 ", creditCost=" + creditCost +
                 '}';

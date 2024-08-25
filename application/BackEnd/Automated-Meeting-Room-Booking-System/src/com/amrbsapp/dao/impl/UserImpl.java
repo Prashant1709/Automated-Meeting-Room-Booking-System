@@ -18,6 +18,27 @@ public class UserImpl implements UserDAO {
     private static final String UPDATE_USER_QUERY = "UPDATE amrbsapp.users SET name=?, email=?, password=?, role=? WHERE userID=?";
     private static final String DELETE_USER_QUERY = "DELETE FROM amrbsapp.users WHERE userID=?";
     private static final String GET_USER_BY_EMAIL_QUERY = "SELECT * FROM amrbsapp.users WHERE email=?";
+    private static final String ASSIGN_CREDITS_QUERY = "UPDATE amrbsapp.users SET credits=? WHERE userID=?";
+    private static final String GET_CREDITS_QUERY = "SELECT credits FROM amrbsapp.users WHERE userID=?";
+    private static final String GET_USER_BY_EMAIL_AND_PASSWORD_QUERY = "SELECT * FROM amrbsapp.users WHERE email=? AND password=?";
+
+
+    @Override
+    public String authenticateUser(String email, String password, Connection connection) {
+        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_EMAIL_AND_PASSWORD_QUERY)) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("role");
+                }
+            }
+        } catch (SQLException e) {
+            // Log the exception
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     @Override
     public User gerUserById(int id, Connection connection) {
@@ -70,7 +91,7 @@ public class UserImpl implements UserDAO {
     public void updateUser(User user, Connection connection) {
         try (PreparedStatement ps = connection.prepareStatement(UPDATE_USER_QUERY)) {
             mapUserToPreparedStatement(user, ps);
-            ps.setString(5, user.getUserID());
+            ps.setInt(5, user.getUserID());
             int ra = ps.executeUpdate();
             if (ra == 1) {
                 System.out.println("User updated successfully");
@@ -115,22 +136,39 @@ public class UserImpl implements UserDAO {
         return null;
     }
 
+    @Override
+    public void assignCredits(int id, int credits, Connection connection) {
+        try (PreparedStatement ps = connection.prepareStatement(ASSIGN_CREDITS_QUERY)) {
+            ps.setInt(1, credits);
+            ps.setInt(2, id);
+            int ra = ps.executeUpdate();
+            if (ra == 1) {
+                System.out.println("Credits assigned successfully");
+            } else {
+                System.out.println("Credits not assigned");
+            }
+        } catch (SQLException e) {
+            // Log the exception
+            e.printStackTrace();
+        }
+    }
+
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
         String role = rs.getString("role");
         if (role.equals("Admin")) {
-            return new Admin(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.ADMIN, null, null);
+            return new Admin(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.ADMIN);
         } else if (role.equals("Manager")) {
-            return new Manager(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MANAGER, rs.getInt("credits"));
+            return new Manager(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MANAGER, rs.getInt("credits"));
         } else {
-            return new Member(rs.getString("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MEMBER);
+            return new Member(rs.getInt("userID"), rs.getString("name"), rs.getString("email"), rs.getString("password"), RoleType.MEMBER);
         }
     }
 
     private void mapUserToPreparedStatement(User user, PreparedStatement ps) throws SQLException {
-        ps.setString(1, user.getUserID());
+        ps.setInt(1, user.getUserID());
         ps.setString(2, user.getName());
         ps.setString(3, user.getEmail());
-        ps.setString(4, user.getPhone());
+        ps.setString(4, user.getPassword());
         ps.setString(5, user.getRole().toString());
     }
 }

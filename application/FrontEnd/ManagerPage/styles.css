@@ -1,0 +1,336 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  transition: 0.2s ease-in-out !important;
+  scroll-behavior: smooth;
+  text-decoration: none !important;
+}
+
+* {
+  text-transform: capitalize;
+  transition: 0.2s ease-in-out !important;
+  text-decoration: none;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+:root {
+  --Soft-Blue: hsl(231, 69%, 60%);
+  --Soft-Red: hsl(0, 94%, 66%);
+  --green: hsl(89, 47%, 40%);
+  --Grayish-Blue: hsl(229, 8%, 60%);
+  --Very-Dark-Blue: hsl(229, 31%, 21%);
+  --box-shadow: 0.5rem 0.5rem 0 hsl(231, 69%, 60%);
+  --box-shadow-booked: 0.5rem 0.5rem hsl(89, 47%, 40%);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+}
+
+::selection {
+  background-color: var(--Soft-Red);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--Grayish-Blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--Soft-Blue);
+}
+
+/* navbar sections starts */
+.header {
+  padding: 1.25rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0%;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  cursor: pointer;
+}
+
+.header .logo img {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+.header .navbar a {
+  margin-left: 1rem;
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out !important;
+}
+
+.header .navbar a:hover {
+  color: var(--Soft-Red);
+}
+
+.header .navbar .btn {
+  padding: 0.6rem 2rem;
+  color: var(--Soft-Red);
+  border-radius: 0.3rem;
+  border: 2px solid var(--Soft-Red) !important;
+}
+
+.header .navbar .btn:hover {
+  background-color: var(--Soft-Red) !important;
+  color: #fff;
+  background-color: transparent;
+}
+
+#menu-btn {
+  padding: 1rem 1rem;
+  background-color: #eee;
+  color: var(--Soft-Blue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 991px) {
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: initial;
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    box-shadow: var(--box-shadow);
+    /* width: 33rem; */
+    border-radius: 0.5rem;
+    border: 2px solid var(--Soft-Blue);
+    background-color: #fff;
+    transform: scale(0);
+    transform-origin: top right;
+  }
+
+  .header .navbar.active {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transform: scale(1);
+  }
+
+  .header .navbar a {
+    margin-top: 0.5rem;
+    text-align: center;
+    display: block;
+    margin-left: 0;
+  }
+}
+
+/* navbar sections ends */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 7rem;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+p {
+  text-align: left;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.room-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 2px solid var(--Soft-Blue);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+}
+
+.room-card:hover {
+  border: 2px solid var(--Soft-Blue);
+  box-shadow: none;
+}
+
+.booked {
+  border: 2px solid var(--green) !important;
+  box-shadow: var(--box-shadow-booked);
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-details {
+  padding: 20px;
+  height: 100%;
+}
+
+.room-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.room-info {
+  font-size: 16px;
+  color: #555;
+}
+
+.amenities-list {
+  margin-bottom: 10px;
+  color: #777;
+}
+
+.book-room-btn {
+  display: block;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.book-room-btn:hover {
+  background-color: #218838;
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.timer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 69, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none; /* Initially hidden */
+}
+
+.room-card.booked .timer {
+  display: block; /* Show only if the room is booked */
+}
+
+.manager-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+}
+
+#view-meetings-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#view-meetings-btn:hover {
+  background-color: #0056b3;
+}
+
+/* footer section starts */
+
+.footer {
+  border-top: 1px solid rgb(202, 176, 176);
+  background-color: rgb(224, 239, 246);
+}
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.footer .box-container .box h3 {
+  font-size: 1.5rem;
+  color: var(--black);
+  /* padding: 1rem 0; */
+}
+
+.footer .box-container .box a {
+  display: block;
+  /* font-size: 1.5rem; */
+  color: var(--light-color);
+  padding: 0.6rem 0;
+}
+
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--green);
+}
+
+.footer .box-container .box a:hover i {
+  padding-right: 1rem;
+}
+
+.footer .credit {
+  padding: 1rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.footer .credit span {
+  color: var(--Soft-Red);
+  cursor: pointer;
+}
+
+/* footer section ends */

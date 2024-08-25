@@ -56,4 +56,12 @@ public class Room {
                 ", isBooked=" + isBooked +
                 '}';
     }
+    public String toJson() {
+        return "{" +
+                "\"roomID\":\"" + roomID + '\"' +
+                ", \"capacity\":" + capacity +
+                ", \"mandatoryAmenities\":" + mandatoryAmenities +
+                ", \"isBooked\":" + isBooked +
+                '}';
+    }
 }

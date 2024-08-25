@@ -1,0 +1,379 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: 0.2s ease-in-out !important;
+  scroll-behavior: smooth;
+  text-decoration: none !important;
+}
+
+* {
+  text-transform: capitalize;
+  transition: 0.2s ease-in-out !important;
+  text-decoration: none;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+:root {
+  --Soft-Blue: hsl(231, 69%, 60%);
+  --Soft-Red: hsl(0, 94%, 66%);
+  --green: hsl(89, 47%, 40%);
+  --Grayish-Blue: hsl(229, 8%, 60%);
+  --Very-Dark-Blue: hsl(229, 31%, 21%);
+  --box-shadow: 0.5rem 0.5rem 0 hsl(231, 69%, 60%);
+  --box-shadow-booked: 0.5rem 0.5rem hsl(89, 47%, 40%);
+  --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+  --border: 0.2rem solid var(--green);
+}
+
+::selection {
+  background-color: var(--Soft-Red);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--Grayish-Blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--Soft-Blue);
+}
+
+/* navbar sections starts */
+.header {
+  padding: 1.25rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0%;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  cursor: pointer;
+}
+
+.header .logo img {
+  width: 12rem !important;
+  height: 3rem !important;
+}
+
+.header .navbar a {
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  transition: 0.2s ease-in-out !important;
+}
+
+.header .navbar a:hover {
+  color: var(--Soft-Red);
+}
+
+.header .navbar .btn {
+  padding: 0.6rem 2rem;
+  color: var(--Soft-Red);
+  border-radius: 0.3rem;
+  border: 2px solid var(--Soft-Red) !important;
+}
+
+.header .navbar .btn:hover {
+  background-color: var(--Soft-Red) !important;
+  color: #fff;
+  background-color: transparent;
+}
+
+#menu-btn {
+  padding: 1rem 1rem;
+  background-color: #eee;
+  color: var(--Soft-Blue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+#manage-users-btn {
+  display: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#manage-users-btn.show {
+  display: inline-block;
+}
+
+#manage-users-btn:hover {
+  background-color: #45a049;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* Media Queries */
+
+@media (max-width: 991px) {
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: initial;
+  }
+
+  .header .navbar {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    box-shadow: var(--box-shadow);
+    /* width: 33rem; */
+    border-radius: 0.5rem;
+    border: 2px solid var(--Soft-Blue);
+    background-color: #fff;
+    transform: scale(0);
+    transform-origin: top right;
+  }
+
+  .header .navbar.active {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transform: scale(1);
+  }
+
+  .header .navbar a {
+    margin-top: 0.5rem;
+    margin-left: 0;
+    text-align: center;
+    display: block;
+  }
+}
+
+/* navbar sections ends */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  padding-top: 7rem;
+}
+
+.button-container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.create-room-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.create-room-button:hover {
+  background-color: #45a049;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border: 2px solid var(--Soft-Blue);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  transition: 0.2s ease-in-out;
+}
+
+.card:hover {
+  border: 2px solid var(--Soft-Blue);
+  box-shadow: none;
+}
+
+.bookedRoom {
+  border: 2px solid var(--green) !important;
+  box-shadow: var(--box-shadow-booked);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card .status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.card .icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card .icons img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.card .card-content {
+  padding: 15px;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card .amenities {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.card .amenities span {
+  display: inline-block;
+  background: #e0e0e0;
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.card .total-cost {
+  font-weight: bold;
+}
+
+.card .timer {
+  color: #e74c3c;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+#view-meetings-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+#view-meetings-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  #view-meetings-btn {
+    margin-left: 0;
+  }
+}
+
+/* footer section starts */
+
+.footer {
+  border-top: 1px solid rgb(202, 176, 176);
+  background-color: rgb(224, 239, 246);
+}
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.footer .box-container .box h3 {
+  font-size: 1.5rem;
+  color: var(--black);
+  /* padding: 1rem 0; */
+}
+
+.footer .box-container .box a {
+  display: block;
+  /* font-size: 1.5rem; */
+  color: var(--light-color);
+  padding: 0.6rem 0;
+}
+
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--green);
+}
+
+.footer .box-container .box a:hover i {
+  padding-right: 1rem;
+}
+
+.footer .credit {
+  padding: 1rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #000;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+}
+
+.footer .credit span {
+  color: var(--Soft-Red);
+  cursor: pointer;
+}

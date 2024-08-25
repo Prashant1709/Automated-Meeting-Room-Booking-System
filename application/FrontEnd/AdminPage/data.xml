@@ -1,0 +1,87 @@
+<users>
+    <user>
+        <id>1</id>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <phone>123-456-7890</phone>
+        <password>password123</password>
+        <role>MANAGER</role>
+        <credits>2000</credits>
+    </user>
+    <user>
+        <id>2</id>
+        <name>Jane Smith</name>
+        <email>jane.smith@example.com</email>
+        <phone>234-567-8901</phone>
+        <password>password234</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <id>3</id>
+        <name>Emily Johnson</name>
+        <email>emily.johnson@example.com</email>
+        <phone>345-678-9012</phone>
+        <password>password345</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <id>4</id>
+        <name>Michael Brown</name>
+        <email>michael.brown@example.com</email>
+        <phone>456-789-0123</phone>
+        <password>password456</password>
+        <role>MANAGER</role>
+        <credits>2000</credits>
+    </user>
+    <user>
+        <id>5</id>
+        <name>Alice Davis</name>
+        <email>alice.davis@example.com</email>
+        <phone>567-890-1234</phone>
+        <password>password567</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <id>6</id>
+        <name>Robert Wilson</name>
+        <email>robert.wilson@example.com</email>
+        <phone>678-901-2345</phone>
+        <password>password678</password>
+        <role>MANAGER</role>
+        <credits>2000</credits>
+    </user>
+    <user>
+        <id>7</id>
+        <name>Susan Martinez</name>
+        <email>susan.martinez@example.com</email>
+        <phone>789-012-3456</phone>
+        <password>password789</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <id>8</id>
+        <name>David Anderson</name>
+        <email>david.anderson@example.com</email>
+        <phone>890-123-4567</phone>
+        <password>password890</password>
+        <role>MANAGER</role>
+        <credits>2000</credits>
+    </user>
+    <user>
+        <id>9</id>
+        <name>Mary Thomas</name>
+        <email>mary.thomas@example.com</email>
+        <phone>901-234-5678</phone>
+        <password>password901</password>
+        <role>MEMBER</role>
+    </user>
+    <user>
+        <id>10</id>
+        <name>James Jackson</name>
+        <email>james.jackson@example.com</email>
+        <phone>012-345-6789</phone>
+        <password>password012</password>
+        <role>MANAGER</role>
+        <credits>2000</credits>
+    </user>
+</users>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- filter the meetings for managers and also allow filtering based on fields. -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings</title>
+    <link rel="stylesheet" href="meetings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo" onclick="goToHome()">
+            <img src="/application//FrontEnd/Logo.png" alt="logo-bookmark">
+        </div>
+
+        <nav class="navbar">
+            <button id="view-meetings-btn">Dashboard</button>
+            <a href="#" class="btn" onclick="logoutHandler()">Log out</a>
+        </nav>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </header>
+    <div class="container">
+        <!-- Back to Manager Page Button -->
+        <!-- <button id="backToManager" class="back-button">Back to Manager Page</button> -->
+        <div class="meetings-header">
+            <h1>Meetings</h1>
+            <input type="text" id="searchBar" placeholder="Search meetings...">
+        </div>
+        <table id="meetings-table">
+            <thead>
+                <tr>
+                    <th>Meeting Room</th>
+                    <!-- <th>Duration</th> -->
+                    <th id="durationHeader">Duration <span id="sortIcon">▼</span></th>
+                    <th>Status</th>
+                    <th>Date & Time</th>
+                    <th>Meeting Type</th>
+                </tr>
+            </thead>
+            <tbody class="tablebody">
+                <!-- Rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="meeting-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Meeting Details</h2>
+            <div id="modal-body">
+                <!-- Meeting details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="meetings.js"></script>
+</body>
+
+</html>

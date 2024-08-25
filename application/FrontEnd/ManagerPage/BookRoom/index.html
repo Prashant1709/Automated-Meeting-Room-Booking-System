@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="left-image">
+                <img id="roomImage" src="" alt="Meeting Room">
+            </div>
+            <div class="form-container">
+                <h1>Book Meeting Room</h1>
+                <div id="roomDetails" class="room-details">
+                    <h3 id="roomName"></h3>
+                    <p><strong>Amenities:</strong> <span id="roomAmenities"></span></p>
+                    <p><strong>Seating Capacity:</strong> <span id="roomCapacity"></span></p>
+                    <p><strong>Booking Cost (per hour):</strong> $<span id="bookingCost"></span></p>
+                </div>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="duration" class="fieldTitle">Duration (H:M:S)</label>
+                        <input type="text" id="duration" name="duration" placeholder="5:30:00" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="fieldTitle">Select Users</label>
+                        <div id="userList" class="checkbox-group"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="meetingType" class="fieldTitle">Meeting Type</label>
+                        <div class="typeGroup">
+                            <div class="meetingRadioWrapper">
+                                <input type="radio" id="classroomTraining" name="meetingType" value="Classroom Training"
+                                    checked required>
+                                <label for="classroomTraining">Classroom Training</label>
+                            </div>
+                            <div class="meetingRadioWrapper">
+                                <input type="radio" id="onlineTraining" name="meetingType" value="Online Training">
+                                <label for="onlineTraining">Online Training</label>
+                            </div>
+                            <div class="meetingRadioWrapper">
+                                <input type="radio" id="conferenceCall" name="meetingType" value="Conference Call">
+                                <label for="conferenceCall">Conference Call</label>
+                            </div>
+                            <div class="meetingRadioWrapper">
+                                <input type="radio" id="businessMeeting" name="meetingType" value="Business Meeting">
+                                <label for="businessMeeting">Business Meeting</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extraAmenities" class="fieldTitle">Request Additional Amenities</label>
+                        <div id="extraAmenities">
+                            <label><input type="checkbox" name="extraAmenity" value="Projector"> Projector</label>
+                            <label><input type="checkbox" name="extraAmenity" value="Whiteboard"> Whiteboard</label>
+                            <label><input type="checkbox" name="extraAmenity" value="TV"> TV</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Room</button>
+                    <div id="error-message" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
