@@ -329,6 +329,12 @@ document
     window.location.href = "CreateRoom/createRoom.html"; // Redirect to the meetings page
   });
 
+  document
+  .getElementById("view-stats-btn")
+  .addEventListener("click", function () {
+    window.location.href = "../StatisticsPage/index.html"; // Redirect to the meetings page
+  });
+
 let menu = document.querySelector("#menu-btn");
 let navbar = document.querySelector(".navbar");
 
