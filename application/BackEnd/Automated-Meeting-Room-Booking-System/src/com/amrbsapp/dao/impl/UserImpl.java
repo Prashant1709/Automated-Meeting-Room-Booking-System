@@ -2,6 +2,7 @@ package com.amrbsapp.dao.impl;
 
 import com.amrbsapp.dao.UserDAO;
 import com.amrbsapp.entity.*;
+import com.amrbsapp.exception.UserNotFoundException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,13 +41,30 @@ public class UserImpl implements UserDAO {
         return "";
     }
 
+//    @Override
+//    public User gerUserById(int id, Connection connection) {
+//        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_ID_QUERY)) {
+//            ps.setInt(1, id);
+//            try (ResultSet rs = ps.executeQuery()) {
+//                if (rs.next()) {
+//                    return mapResultSetToUser(rs);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            // Log the exception
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
     @Override
-    public User gerUserById(int id, Connection connection) {
+    public User gerUserById(int id, Connection connection) throws UserNotFoundException {
         try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_ID_QUERY)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return mapResultSetToUser(rs);
+                } else {
+                    throw new UserNotFoundException("User with ID " + id + " not found.");
                 }
             }
         } catch (SQLException e) {
@@ -88,15 +106,16 @@ public class UserImpl implements UserDAO {
     }
 
     @Override
-    public void updateUser(User user, Connection connection) {
+    public void updateUser(User user, Connection connection) throws UserNotFoundException {
         try (PreparedStatement ps = connection.prepareStatement(UPDATE_USER_QUERY)) {
             mapUserToPreparedStatement(user, ps);
             ps.setInt(5, user.getUserID());
             int ra = ps.executeUpdate();
+
             if (ra == 1) {
                 System.out.println("User updated successfully");
             } else {
-                System.out.println("User not updated");
+                throw new UserNotFoundException("User with ID " + user.getUserID() + " not found.");
             }
         } catch (SQLException e) {
             // Log the exception
@@ -104,15 +123,32 @@ public class UserImpl implements UserDAO {
         }
     }
 
+//    @Override
+//    public void deleteUser(int id, Connection connection) {
+//        try (PreparedStatement ps = connection.prepareStatement(DELETE_USER_QUERY)) {
+//            ps.setInt(1, id);
+//            int ra = ps.executeUpdate();
+//            if (ra == 1) {
+//                System.out.println("User deleted successfully");
+//            } else {
+//                System.out.println("User not deleted");
+//            }
+//        } catch (SQLException e) {
+//            // Log the exception
+//            e.printStackTrace();
+//        }
+//    }
+
     @Override
-    public void deleteUser(int id, Connection connection) {
+    public void deleteUser(int id, Connection connection) throws UserNotFoundException {
         try (PreparedStatement ps = connection.prepareStatement(DELETE_USER_QUERY)) {
             ps.setInt(1, id);
             int ra = ps.executeUpdate();
+
             if (ra == 1) {
                 System.out.println("User deleted successfully");
             } else {
-                System.out.println("User not deleted");
+                throw new UserNotFoundException("User with ID " + id + " not found.");
             }
         } catch (SQLException e) {
             // Log the exception

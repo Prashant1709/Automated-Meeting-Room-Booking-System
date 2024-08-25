@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
     String authenticateUser(String email, String password, Connection connection);
-    User getUserById(int userID, Connection connection);
+    User getUserById(int userID, Connection connection) throws UserNotFoundException;
     List<User> getAllUsers(Connection connection);
     void saveUser(User user,Connection connection);
     void updateUser(User user,Connection connection);

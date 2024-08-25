@@ -13,7 +13,7 @@ import java.util.List;
 public class BookingImpl implements BookingDAO {
 
     @Override
-    public Booking getBookingByID(int bookingID, Connection conn) {
+    public Booking getBookingByID(int bookingID, Connection conn)  {
         String sql = "SELECT * FROM amrbsapp.bookings WHERE booking_id = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
