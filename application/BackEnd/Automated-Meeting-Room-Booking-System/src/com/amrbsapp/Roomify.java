@@ -2,6 +2,8 @@ package com.amrbsapp;
 
 import com.amrbsapp.controller.*;
 import com.amrbsapp.entity.*;
+import com.amrbsapp.exception.AmenityNotFoundException;
+import com.amrbsapp.exception.RoomNotAvailableException;
 import com.amrbsapp.view.ViewConsole;
 
 import java.time.LocalDateTime;
@@ -13,7 +15,7 @@ import static java.lang.System.exit;
 
 public class Roomify {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AmenityNotFoundException, RoomNotAvailableException {
         Scanner scanner = new Scanner(System.in);
         RoomController roomController = ControllerProvider.getRoomController();
         UserController userController = ControllerProvider.getUserController();

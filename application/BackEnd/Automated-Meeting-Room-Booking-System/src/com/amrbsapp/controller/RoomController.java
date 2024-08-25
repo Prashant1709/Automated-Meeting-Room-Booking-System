@@ -1,6 +1,7 @@
 package com.amrbsapp.controller;
 
 import com.amrbsapp.entity.Room;
+import com.amrbsapp.exception.RoomNotAvailableException;
 import com.amrbsapp.service.RoomService;
 import com.amrbsapp.util.DBConnection;
 
@@ -15,7 +16,7 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    public Room getRoom(int roomID){
+    public Room getRoom(int roomID) throws RoomNotAvailableException {
         return roomService.getRoomById(roomID,conn);
     }
     public List<Room> getAllRooms(){
@@ -24,10 +25,10 @@ public class RoomController {
     public void addRoom(Room room){
         roomService.saveRoom(room,conn);
     }
-    public void updateRoom(Room room){
+    public void updateRoom(Room room) throws RoomNotAvailableException {
         roomService.updateRoom(room,conn);
     }
-    public void deleteRoom(int roomID){
+    public void deleteRoom(int roomID) throws RoomNotAvailableException {
         roomService.deleteRoom(roomID,conn);
     }
     public List<Room> getAvailableRooms(){

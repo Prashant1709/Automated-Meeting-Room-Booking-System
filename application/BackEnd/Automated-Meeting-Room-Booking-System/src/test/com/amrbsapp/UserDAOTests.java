@@ -2,6 +2,7 @@ package test.com.amrbsapp;
 
 import com.amrbsapp.dao.impl.UserImpl;
 import com.amrbsapp.entity.*;
+import com.amrbsapp.exception.UserNotFoundException;
 import org.junit.jupiter.api.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -56,7 +57,7 @@ public class UserDAOTests {
     }
 
     @Test
-    public void testSaveUser() throws SQLException {
+    public void testSaveUser() throws SQLException, UserNotFoundException {
         User newUser = new Member(4, "Alice Green", "alice.green@example.com", "password321", RoleType.MEMBER);
         userDAO.saveUser(newUser, connection);
 
@@ -69,7 +70,7 @@ public class UserDAOTests {
     }
 
     @Test
-    public void testUpdateUser() throws SQLException {
+    public void testUpdateUser() throws SQLException, UserNotFoundException {
         User userToUpdate = new Admin(1, "John Doe Updated", "john.doe@example.com", "newpassword123", RoleType.ADMIN);
         userDAO.updateUser(userToUpdate, connection);
 
@@ -80,7 +81,7 @@ public class UserDAOTests {
     }
 
     @Test
-    public void testDeleteUser() throws SQLException {
+    public void testDeleteUser() throws SQLException, UserNotFoundException {
         userDAO.deleteUser(3, connection);
         User deletedUser = userDAO.gerUserById(3, connection);
         assertNull(deletedUser);

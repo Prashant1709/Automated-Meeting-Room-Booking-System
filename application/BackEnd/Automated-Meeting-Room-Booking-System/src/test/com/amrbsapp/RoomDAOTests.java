@@ -1,6 +1,7 @@
 package test.com.amrbsapp;
 
 import com.amrbsapp.dao.impl.RoomImpl;
+import com.amrbsapp.exception.RoomNotAvailableException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.DisplayName;
 import java.sql.Connection;
@@ -50,7 +51,7 @@ public class RoomDAOTests {
     }
 
     @Test
-    public void testSaveRoom() throws SQLException {
+    public void testSaveRoom() throws SQLException, RoomNotAvailableException {
         Room newRoom = new Room(3, 20, null, false);
         roomDAO.saveRoom(newRoom, connection);
 
@@ -62,7 +63,7 @@ public class RoomDAOTests {
     }
 
     @Test
-    public void testUpdateRoom() throws SQLException {
+    public void testUpdateRoom() throws SQLException, RoomNotAvailableException {
         Room roomToUpdate = new Room(1, 100, null, true);
         roomDAO.updateRoom(roomToUpdate, connection);
 
@@ -73,7 +74,7 @@ public class RoomDAOTests {
     }
 
     @Test
-    public void testDeleteRoom() throws SQLException {
+    public void testDeleteRoom() throws SQLException, RoomNotAvailableException {
         roomDAO.deleteRoom(2, connection);
         Room deletedRoom = roomDAO.getRoomByID(2, connection);
         assertNull(deletedRoom);
